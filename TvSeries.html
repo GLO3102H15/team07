@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-justified-nav.css" rel="stylesheet">
+    <link href="css/bootstrap-carousel.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">UMovie</a>
+        </div>
+
+        <div class="navbar-collapse collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="#watchlists">Watchlists</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Current User
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Account</li>
+                        <li><a href="#">Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Actions</li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search UMovie" name="srch-term"
+                               id="srch-term">
+
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="container">
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="movie-title">Firefly </h2>
+            <small><img class="movie-rating"
+                        src="https://upload.wikimedia.org/wikipedia/en/a/af/Fireflyopeninglogo.JPG"> Fantasy and Sci-fi
+            </small>
+            <p class="lead">Five hundred years in the future there's a whole new frontier, and the crew of the
+                Firefly-class spaceship, Serenity, is eager to stake a claim on the action. They'll take any job, legal
+                or illegal, to keep fuel in the tanks and food on the table. But things get a bit more complicated after
+                they take on a passenger wanted by the new totalitarian Alliance regime. Now they find themselves on the
+                run, desperate to steer clear of Alliance ships and the flesh-eating Reavers who live on the fringes of
+                space.</p>
+        </div>
+    </div>
+    <div class="row movie-buttons">
+
+        <a href="https://geo.itunes.apple.com/ca/tv-season/firefly-the-complete-series/id151801083?mt=4"
+           style="display:inline-block;overflow:hidden;background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;width:120px;height:40px;"></a>
+
+    </div>
+</div>
+
+<!-- /.container -->
+<div>
+
+    <footer class="footer">
+        <p>&copy; Team7Crew 2015</p>
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
