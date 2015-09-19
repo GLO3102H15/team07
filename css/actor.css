@@ -1,4 +1,4 @@
-.background-container {
+.prattground-container {
     position: fixed;
     top: 0;
     right: 0;
@@ -6,7 +6,7 @@
     left: 0;
     z-index: -1;
 }
-.background {
+.prattground {
     position: absolute;
     top: 0;
     right: 0;
@@ -14,10 +14,57 @@
     left: 0;
     background-position: center;
     background-size: cover;
-    opacity: .2;
+    opacity: 1;
     filter: alpha(opacity=20);
     -webkit-transition: opacity .5s;
     transition: opacity .5s;
 
     background-image: url("../images/prattground.jpg");
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    .prattground-container { display: block; }  /* show it on small screens */
+    .profile-picture {
+        display:none;
+    }
+}
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+    .prattground-container { display: none; }   /* hide it elsewhere */
+    .profile-picture {
+        display: inline;
+        width: 45%;
+        height: 90%;
+        padding: 2%;
+    }
+}
+
+.actor-infos {
+    width: 100%;
+    display: flex;
+    margin-top:50px;
+
+    background-color: rgba(128, 128, 128, 0.6);
+    border-radius: 10px;
+}
+
+.infos-table {
+    flex: 1 55%;
+    font-size: large;
+    list-style-type:none;
+    text-align: left;
+}
+
+.jurassic-link {
+    display:inline-block;
+    overflow:hidden;
+    background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;
+    width:110px;
+    height:40px;
+    margin: 15px;
+}
+
+.actor-page {
+    border-top: 1px solid #eee;
+    padding: 10%;
 }

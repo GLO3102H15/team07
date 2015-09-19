@@ -1,35 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ActorPage</title>
+    <title>UMovie - Just movies, no pain, just fun</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- next line from bootstrap example -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-justified-nav.css" rel="stylesheet">
-    <link href="css/bootstrap-carousel.css" rel="stylesheet">
     <link href="css/actor.css" rel="stylesheet">
+
 </head>
+
 <body>
 
-<div class="background-container"><div class="background"></div>
+<div class="prattground-container">
+    <div class="prattground"></div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
 
-<div class="row">
-    <div class="col-lg-4">
-        <h3>Chris Pratt Bio</h3>
+    <div class="container">
 
-        <p>
-            Born	Christopher Michael Pratt
-            June 21, 1979 (age 36)
-            Virginia, Minnesota, United States
-            Education	Lake Stevens High School
-            Occupation	Actor
-            Years active	2000–present
-            Spouse(s)	Anna Faris (m. 2009)
-            Children	1
-        </p>
-        <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">UMovie</a>
+        </div>
+
+        <div class="navbar-collapse collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+
+                <li><a href="#watchlists">Watchlists</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        Current User
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Account</li>
+                        <li><a href="#">Settings</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Actions</li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search UMovie" name="srch-term"
+                               id="srch-term">
+
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i
+                                    class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container actor-infos">
+        <img class="profile-picture" src="images/prattfil.jpg">
+        <div>
+            <ul class="infos-table">
+                <li><h1>Chris Pratt</h1></li>
+                <li>Primary Genre : Action</li>
+                <li>Born : Christopher Michael Pratt</li>
+                <li>Birthday : June 21, 1979 (age 36)</li>
+                <li>Education : Lake Stevens High School</li>
+                <li>Years active :	2000–present </li>
+                <li>Spouse : Anna Faris</li>
+                <li>Children : 1</li>
+                <li><a class="jurassic-link"
+                       href="https://geo.itunes.apple.com/ca/movie/jurassic-world/id973589977?mt=6"></a></li>
+            </ul>
+        </div>
     </div>
 </div>
+
+<div class="col-sm-8 blog-main">
+
+    <div class="actor-page">
+        <h2 class="blog-post-title">FILMOGRAPHY</h2>
+
+        <h3 class="movie-date">2003</h3>
+        <p>2003	The Extreme Team	Keenan</p>
+        <h3 class="movie-date">2005</h3>
+        <p>2005	Strangers with Candy	Brason</p>
+        <h3 class="movie-date">2007</h3>
+        <p>2007	Walk the Talk	Cam</p>
+        <h3 class="movie-date">2008</h3>
+        <p>2008	Wieners	Bobby</p>
+        <p>2008	Wanted	Barry</p>
+        <h3 class="movie-date">2009</h3>
+        <p>2009	Bride Wars	Fletcher</p>
+        <p>2009	Deep in the Valley	Lester Watts</p>
+        <p>2009	Jennifer's Body	Roman Duda</p>
+        <h3 class="movie-date">2011</h3>
+        <p>2011	Take Me Home Tonight	Kyle Masterson</p>
+        <p>2011	Moneyball	Scott Hatteberg</p>
+        <p>2011	What's Your Number?	Disgusting Donald</p>
+        <p>2011	10 Years	Cully</p>
+        <h3 class="movie-date">2012</h3>
+        <p>2012	The Five-Year Engagement	Alex Eilhauer</p>
+        <p>2012	Zero Dark Thirty	Justin</p>
+        <h3 class="movie-date">2013</h3>
+        <p>2013	Movie 43	Doug</p>
+        <p>2013	Mr. Payback	Darren</p>
+        <p>2013	Delivery Man</p>
+        <p>2013	Her	Paul</p>
+        <h3 class="movie-date">2014</h3>
+        <p>2014	The Lego Movie	Emmet Brickowski</p>
+        <p>2014	Guardians of the Galaxy	Peter Quill</p>
+        <h3 class="movie-date">2015</h3>
+        <p>2015	Jurassic World	Owen Grady</p>
+        <h3 class="movie-date">Upcoming</h3>
+        <p>2016	The Magnificent Seven</p>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Team7Crew 2015</p>
+    </footer>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
