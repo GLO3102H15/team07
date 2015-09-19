@@ -1,0 +1,15 @@
+.apple-button {
+    display:inline-block;
+    overflow:hidden;
+    background:url(http://linkmaker.itunes.apple.com/images/badges/en-us/badge_itunes-lrg.svg) no-repeat;
+    width:120px;
+    height:40px;
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out;
+}
+
+.apple-button:hover {
+    opacity: 0.7;
+}
