@@ -1,0 +1,57 @@
+.tv-show{
+    padding: 20px;
+}
+.tv-banner {
+    text-align: center;
+}
+
+.tv-banner > img{
+    width:60%;
+}
+
+.tv-info {
+    padding-top: 20px;
+}
+.row.tv-info  img {
+    width:100%;
+}
+
+.row .tv-preview {
+    padding-top:20px;
+    position: relative;
+}
+
+.episode-list  li {
+    display: inline;
+    float: left;
+}
+
+.episode-list  ul{
+    list-style-type: none;
+}
+
+.episode-list  a{
+    text-decoration: none;
+
+}
+
+.episode {
+    margin: 15px 10px 15px 10px;
+    width: 110px;
+    height: 150px;
+}
+
+
+.episode-title{
+    font-weight: bold;
+    color:black;
+}
+
+.episode-number{
+    color:darkgrey;
+}
+
+.row.button {
+    text-align: center;
+    margin-top: 20px;
+}
