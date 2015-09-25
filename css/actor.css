@@ -22,44 +22,49 @@
     background-image: url("../images/prattground.jpg");
 }
 
-@media screen and (min-width: 0px) and (max-width: 400px) {
-    .prattground-container { display: block; }  /* show it on small screens */
+@media screen and (min-width: 0px) and (max-width: 950px) {
+    .prattground-container { display: block; }
     .profile-picture {
         display:none;
     }
+    .actor-infos {
+        width: 100%;
+        border-radius: 0px;
+        background-color: rgba(128, 128, 128, 0.6);
+    }
 }
 
-@media screen and (min-width: 401px) and (max-width: 1024px) {
-    .prattground-container { display: none; }   /* hide it elsewhere */
+@media screen and (min-width: 951px) {
+    .prattground-container { display: none; }
     .profile-picture {
         display: inline;
-        width: 45%;
-        height: 90%;
+        width: 35%;
+        height: 50%;
+        min-width: 35%;
+        min-height: 50%;
         padding: 2%;
+    }
+    .actor-infos {
+        width: 65%;
+        border-radius: 10px;
+        color : #9d9d9d;
+
+        background-color: #333;
+    }
+
+    .filmography-table > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+        background-color: rgba(128, 128, 128, 0.3);
     }
 }
 
 .actor-infos {
-    width: 100%;
     display: flex;
     margin-top:50px;
-
-    background-color: rgba(128, 128, 128, 0.6);
-    border-radius: 10px;
 }
 
-.infos-table {
+.bio-table {
     flex: 1 55%;
     font-size: large;
     list-style-type:none;
     text-align: left;
-}
-
-.jurassic-link {
-    margin: 15px;
-}
-
-.actor-page {
-    border-top: 1px solid #eee;
-    padding: 10%;
 }
