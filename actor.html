@@ -15,6 +15,7 @@
     <link href="css/base.css" rel="stylesheet">
     <link href="css/actor.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -97,10 +98,9 @@
     </div>
 </div>
 
-
 <div class="container">
     <h2>FILMOGRAPHY</h2>
-    <table class="table filmography-table">
+    <table class="table table-condensed filmography-table" style="border-collapse:collapse;">
         <thead>
         <tr>
             <th>Year</th>
@@ -110,66 +110,125 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>2011</td>
-            <td>10 Years</td>
-            <td>Cully</td>
-            <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/10-years/id580540966?mt=6"></a></td>
-        </tr>
-        <tr>
-            <td>2012</td>
-            <td>The Five-Year Engagement</td>
-            <td>Alex Eilhauer</td>
-            <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/five-year-engagement-unrated/id545166168?mt=6"></a></td>
-        </tr>
-        <tr>
-            <td>2012</td>
-            <td>Zero Dark Thirty</td>
-            <td>Justin</td>
-            <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/zero-dark-thirty/id595474725?mt=6"></a></td>
-        </tr>
-        <tr>
-            <td>2013</td>
-            <td>Movie 43</td>
-            <td>Doug</td>
-            <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/movie-43/id634548830?mt=6"></a></td>
-        </tr>
-        <tr>
-            <td>2013</td>
-            <td>Delivery Man</td>
-            <td>-</td>
-            <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/delivery-man/id741226141?mt=6"></a></td>
-        </tr>
-        <tr>
+        <tr data-toggle="collapse" data-target="#her-toggle" class="accordion-toggle">
             <td>2013</td>
             <td>Her</td>
             <td>Paul</td>
             <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/her-2013/id810314926?mt=6"></a></td>
         </tr>
-        <tr>
+        <tr >
+            <td colspan="6" class="hiddenRow"><div class="accordian-body collapse" id="her-toggle"> <div class="container">
+                <div class="row">
+                    <div class="col-lg-1 movie-poster">
+                        <img src="http://trailers.apple.com/trailers/wb/her/images/background.jpg">
+                    </div>
+                </div>
+                <div class="row featurette">
+                    <div class="col-md-7 col-md-push-5">
+                        <h2 class="movie-title">Her
+                            <small class="text-muted">October 12, 2013</small>
+                        </h2>
+                        <small><img class="movie-rating" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/RATED_R.svg/2000px-RATED_R.svg.png">
+                            Drama, Romance, Sci-Fi
+                        </small>
+                        <p class="lead">A lonely writer develops an unlikely relationship with his newly purchased operating
+                            system that's designed to meet his every need.</p>
+                    </div>
+                    <div class="col-md-5 col-md-pull-7 preview">
+                        <a><img src="http://i.ytimg.com/vi/6QRvTv_tpw0/maxresdefault.jpg"></a>
+                        <span><img src="http://static3.appzota.com/2015/0808/video-player-perfect-hd-10_5f8b7.png"></span>
+                    </div>
+                </div>
+            </div> </div> </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#lego-toggle" class="accordion-toggle">
             <td>2014</td>
             <td>The Lego Movie</td>
-            <td> Emmet Brickowski</td>
+            <td>Emmet Brickowski</td>
             <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/the-lego-movie/id805178535?mt=6"></a></td>
         </tr>
-        <tr>
+        <tr >
+            <td colspan="6" class="hiddenRow"><div class="accordian-body collapse" id="lego-toggle"> <div class="container">
+                <div class="row">
+                    <div class="col-lg-1 movie-poster">
+                        <img src="http://trailers.apple.com/trailers/wb/thelegomovie/images/background.jpg">
+                    </div>
+                </div>
+                <div class="row featurette">
+                    <div class="col-md-7 col-md-push-5">
+                        <h2 class="movie-title">The Lego Movie
+                            <small class="text-muted">February 7, 2014</small>
+                        </h2>
+                        <small><img class="movie-rating" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/RATED_PG.svg">
+                            Animation, Action, Adventure
+                        </small>
+                        <p class="lead">An ordinary Lego construction worker, thought to be the prophesied 'Special', is recruited to join a quest to
+                            stop an evil tyrant from gluing the Lego universe into eternal stasis.</p>
+                    </div>
+                    <div class="col-md-5 col-md-pull-7 preview">
+                        <a><img src="http://i.ytimg.com/vi/layIMWcdgxg/maxresdefault.jpg"></a>
+                        <span><img src="http://static3.appzota.com/2015/0808/video-player-perfect-hd-10_5f8b7.png"></span>
+                    </div>
+                </div>
+            </div> </div> </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#guardians-toggle" class="accordion-toggle">
             <td>2014</td>
             <td>Guardians of the Galaxy</td>
             <td>Peter Quill</td>
             <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/guardians-of-the-galaxy/id899347364?mt=6"></a></td>
         </tr>
-        <tr>
+        <td colspan="6" class="hiddenRow"><div class="accordian-body collapse" id="guardians-toggle"> <div class="container">
+            <div class="row">
+                <div class="col-lg-1 movie-poster">
+                    <img src="http://trailers.apple.com/trailers/marvel/guardiansofthegalaxy/images/background.jpg">
+                </div>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-7 col-md-push-5">
+                    <h2 class="movie-title">Guardians of the Galaxy
+                        <small class="text-muted">August 13, 2014</small>
+                    </h2>
+                    <small><img class="movie-rating" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/RATED_PG.svg">
+                        Action, Adventure, Sci-Fi
+                    </small>
+                    <p class="lead">A group of intergalactic criminals are forced to work together to stop a fanatical warrior from taking control of the universe.</p>
+                </div>
+                <div class="col-md-5 col-md-pull-7 preview">
+                    <a><img src="http://i.ytimg.com/vi/2XltzyLcu0g/maxresdefault.jpg"></a>
+                    <span><img src="http://static3.appzota.com/2015/0808/video-player-perfect-hd-10_5f8b7.png"></span>
+                </div>
+            </div>
+        </div> </div> </td>
+        <tr data-toggle="collapse" data-target="#jurassic-toggle" class="accordion-toggle">
             <td>2015</td>
             <td>Jurassic World</td>
             <td>Owen Grady</td>
             <td><a class="apple-button" href="https://geo.itunes.apple.com/ca/movie/jurassic-world/id973589977?mt=6"></a></td>
         </tr>
-        <tr>
-            <td>2016</td>
-            <td>The Magnificent Seven</td>
-            <td>-</td>
-            <td></td>
-        </tr>
+        <td colspan="6" class="hiddenRow"><div class="accordian-body collapse" id="jurassic-toggle"> <div class="container">
+            <div class="row">
+                <div class="col-lg-1 movie-poster">
+                    <img src="http://trailers.apple.com/trailers/universal/jurassicworld/images/background.jpg">
+                </div>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-7 col-md-push-5">
+                    <h2 class="movie-title">Jurassic World
+                        <small class="text-muted">June 10, 2015</small>
+                    </h2>
+                    <small><img class="movie-rating" src="https://upload.wikimedia.org/wikipedia/commons/c/c0/RATED_PG-13.svg">
+                        Action, Adventure, Sci-Fi
+                    </small>
+                    <p class="lead">A new theme park is built on the original site of Jurassic Park. Everything is going well until the park's newest attraction--
+                        a genetically modified giant stealth killing machine--escapes containment and goes on a killing spree.</p>
+                </div>
+                <div class="col-md-5 col-md-pull-7 preview">
+                    <a><img src="http://i.ytimg.com/vi/L-6G911eCvg/maxresdefault.jpg"></a>
+                    <span><img src="http://static3.appzota.com/2015/0808/video-player-perfect-hd-10_5f8b7.png"></span>
+                </div>
+            </div>
+        </div> </div> </td>
         </tbody>
     </table>
 </div>

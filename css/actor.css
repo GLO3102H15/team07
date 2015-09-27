@@ -52,10 +52,12 @@
         background-color: #333;
     }
 
-    .filmography-table > tbody > tr:nth-child(even) > td, .table-striped > tbody > tr:nth-child(even) > th {
+    .filmography-table > tbody > tr:nth-child(4n+1) > td, .table-striped > tbody > tr:nth-child(4n+1) > th {
         background-color: rgba(128, 128, 128, 0.3);
     }
 }
+
+tr { cursor: pointer; }
 
 .actor-infos {
     display: flex;
@@ -67,4 +69,8 @@
     font-size: large;
     list-style-type:none;
     text-align: left;
+}
+
+.hiddenRow {
+    padding: 0 !important;
 }

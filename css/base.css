@@ -65,3 +65,27 @@
     height: 18%;
     width: 18%;
 }
+
+
+.row .movie-rating {
+    max-height:10px;
+    max-width: 50px;
+}
+
+.movie-poster{
+    width: 80%;
+    float: none;
+    margin: 20px auto;
+}
+
+.movie-poster > img {
+    width:100%;
+}
+
+.row.featurette .movie-title {
+    margin-bottom: 0;
+}
+
+.row.featurette  img {
+    width:100%;
+}
