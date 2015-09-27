@@ -1,0 +1,8 @@
+Les fichiers html correspondent aux livrables demandés:
+
+- index.html
+- actor.html
+- movie.html
+- tvshow.html
+
+N.-B. : Les boutons dans le carousel pour les minions et Friends ne fonctionnent pas, car ils n'ont pas de pages associés (de façon hardcodée), mais les autres oui.
