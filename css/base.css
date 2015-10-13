@@ -18,6 +18,11 @@
     position: relative;
 }
 
+.ytplayer {
+    width: 65%;
+    height:50%;
+}
+
 .row .preview a img {
     transition: 0.3s filter linear;
     -webkit-transition: 0.3s -webkit-filter linear;
