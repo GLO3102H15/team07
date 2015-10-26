@@ -84,15 +84,14 @@
         <img class="profile-picture" src="../images/prattfil.jpg">
 
         <div>
-            <ul class="bio-table">
-                <li><h1>Chris Pratt</h1></li>
-                <li>Primary Genre : Action</li>
-                <li>Born : Christopher Michael Pratt</li>
-                <li>Birthday : June 21, 1979 (age 36)</li>
-                <li>Education : Lake Stevens High School</li>
-                <li>Years active : 2000–present</li>
-                <li>Spouse : Anna Faris</li>
-                <li>Children : 1</li>
+            <ul class="bio-table" id="actorInfo">
+                <script type="text/template" class="template" id="actorInfoTemplate">
+                    <li><h1><%= artistName %></h1></li>
+                    <li><%= artistType %></li>
+                    <li>Primary Genre : <%= primaryGenreName %></li>
+                    <li><a type="button" class="btn-mini" href="<%= artistLinkUrl %>">Artist Page</a></li>
+                    <li><a type="button" class="btn-mini" href="<%= radioStationUrl %>">Radio</a></li>
+                </script>
             </ul>
         </div>
     </div>
@@ -245,5 +244,19 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+<script type="text/javascript" src="../js/models/ActorModel.js"></script>
+<script type="text/javascript" src="../js/views/ActorView.js"></script>
+<script type="text/javascript">
+    var actor_model = new ActorModel();
+    actor_model.set("artistId", 347084658);
+    var actor_view = new ActorView({
+        model: actor_model,
+        templateScript: $("#actorInfoTemplate").html(),
+        templateElement: $("#actorInfo")
+    });
+</script>
+
 </body>
 </html>
