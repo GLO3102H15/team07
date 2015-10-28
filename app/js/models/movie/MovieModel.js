@@ -13,8 +13,6 @@ var Movie = Backbone.Model.extend({
     parse: function(data){
         return data.results[0];
     }
-
-
 });
 
 var movie = new Movie();

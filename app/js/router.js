@@ -3,18 +3,18 @@ define([
     'underscore',
     'backbone',
     'views/home/HomeView',
-    'views/actor/ActorView'
-    //'views/contributors/ContributorsView',
-    //'views/footer/FooterView'
-], function($, _, Backbone, HomeView, ActorView /*MovieView, WatchListsView*/ /* TvShowView, ActorView, ...*/) {
+    'views/actor/ActorView',
+    'views/watchLists/WatchListsView',
+    'views/tvShow/TvShowView',
+    'views/movie/MovieView'
+], function($, _, Backbone, HomeView, ActorView, WatchListsView, TvShowView, MovieView) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
-            // Define some URL routes
-            //'movie': 'showMovie',
+            'movie': 'showMovie',
             'actor': 'showActor',
-            //'tv-show': 'showTvShow',
-            //'watch-lists': 'showWatchLists',
+            'tv-show': 'showTvShow',
+            'watch-lists': 'showWatchLists',
 
             // Default
             '*actions': 'defaultAction'
@@ -24,40 +24,29 @@ define([
     var initialize = function(){
 
         var app_router = new AppRouter;
-        /*
-        app_router.on('route:showMovie', function(){
 
-            // Call render on the module we loaded in via the dependency array
+        app_router.on('route:showMovie', function(){
             var movieView = new MovieView();
             movieView.render();
 
-        });*/
-
-        app_router.on('route:showActor', function () {
-
-            // Like above, call render but know that this view has nested sub views which
-            // handle loading and displaying data from the GitHub API
-            var actorView = new ActorView();
-            actorView.render();
         });
 
-        /*
-        // Instantiate
+        app_router.on('route:showActor', function () {
+            var param = 347084658; // Chris Pratt. Temporaire...
+            var actorView = new ActorView(param);
+        });
+
+
         app_router.on('route:showTvShow', function () {
-
-            // Like above, call render but know that this view has nested sub views which
-            // handle loading and displaying data from the GitHub API
             var tvShowView = new TvShowView();
-         tvShowView.render();
-        });*/
-        /*
-        app_router.on('route:showWatchLists', function(){
+            tvShowView.render();
+        });
 
-            // Call render on the module we loaded in via the dependency array
+        app_router.on('route:showWatchLists', function(){
             var watchListsView = new WatchListsView();
             watchListsView.render();
 
-        });*/
+        });
 
         app_router.on('route:defaultAction', function (actions) {
 
