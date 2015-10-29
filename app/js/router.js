@@ -26,16 +26,14 @@ define([
         var app_router = new AppRouter;
 
         app_router.on('route:showMovie', function(){
-            var movieView = new MovieView();
-            movieView.render();
-
+            var param = 1039586890;
+            var movieView = new MovieView(param);
         });
 
         app_router.on('route:showActor', function () {
             var param = 347084658; // Chris Pratt. Temporaire...
             var actorView = new ActorView(param);
         });
-
 
         app_router.on('route:showTvShow', function () {
             var tvShowView = new TvShowView();
@@ -49,8 +47,6 @@ define([
         });
 
         app_router.on('route:defaultAction', function (actions) {
-
-            // We have no matching route, lets display the home page
             var homeView = new HomeView();
             homeView.render();
         });

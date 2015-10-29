@@ -1,24 +1,33 @@
-var Movie = Backbone.Model.extend({
-    urlRoot: 'https://umovie.herokuapp.com/unsecure/movies/',
-    defaults: {
-        id: 0,
-        releaseDate: "1970-01-01T00:00:00Z",
-        primaryGenreName: "",
-        trackViewUrl: "",
-        shortDescription: "",
-        longDescription: "",
-        contentAdvisoryRating: "",
-        trackName: ""
-    },
-    parse: function(data){
-        return data.results[0];
-    }
-});
+define([
+    'underscore',
+    'backbone'
+], function(_, Backbone) {
 
-var movie = new Movie();
-movie.set("id", 1039586890);
-movie.fetch({
-    success: function(){
-        console.info("hello");
-    }
+    var MovieModel = Backbone.Model.extend({
+        urlRoot: 'https://umovie.herokuapp.com/unsecure/movies/',
+        defaults: {
+            id: 0,
+            date: "",
+            genre: "",
+            appleURL: "",
+            description: "",
+            rating: "",
+            title: "",
+            poster: ""
+        },
+        parse: function(data){
+            var result = data.results[0];
+            return {
+                date: new Date(result.releaseDate),
+                genre: result.primaryGenreName,
+                appleURL: result.trackViewUrl,
+                description: result.longDescription,
+                rating: result.contentAdvisoryRating,
+                title: result.trackName,
+                poster: result.artworkUrl100.replace(new RegExp('100', 'g'), '1680')
+            };
+        }
+    });
+
+    return MovieModel;
 });
