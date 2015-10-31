@@ -28,8 +28,6 @@ define([
 
         edit: function() {
             this.$el.addClass("editing-watchlist");
-            console.log(this.$el);
-            console.log(this.input);
             this.input.focus();
         },
 

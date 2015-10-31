@@ -17,7 +17,6 @@ define([
         },
         parse: function(data){
             var result = data.results[0];
-            console.log(result);
             return {
                 date: new Date(result.releaseDate),
                 genre: result.primaryGenreName,

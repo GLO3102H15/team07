@@ -9,9 +9,9 @@ define([
         urlRoot: 'https://umovie.herokuapp.com/unsecure/watchlists/',
 
         initialize: function () {
+            debugger;
             this.movies = new MovieCollection(this.movies);
             this.movies.url = this.urlRoot + this.id + '/movies';
-            console.log(this.attributes);
         },
 
         default: {
@@ -21,6 +21,7 @@ define([
         },
 
         parse: function(response){
+            debugger;
             var movies = new MovieCollection(response.movies);
             movies.url = this.urlRoot + response.id + '/movies';
             return {

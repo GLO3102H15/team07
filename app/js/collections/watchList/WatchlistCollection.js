@@ -14,6 +14,7 @@ define([
         },
 
         parse: function (response) {
+            debugger;
             var watchlistCollectionScope = this;
             var userWatchlists = _.filter(response, function (watchlist) {
                 if (_.has(watchlist.owner, "email")) {
