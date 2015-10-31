@@ -1,0 +1,40 @@
+<table class="table table-condensed filmography-table" style="border-collapse:collapse;">
+    <thead>
+    <tr>
+        <th>Year</th>
+        <th>Cover</th>
+        <th>Title  (Click to expand)</th>
+        <th>Buy it</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(movies, function(movie) { %>
+    <tr data-toggle="collapse" data-target="#<%= movie.trackId %>-toggle" class="accordion-toggle">
+        <td><%= movie.releaseDate.substring(0,4) %></td>
+        <td><img src="<%= movie.artworkUrl60 %>"></td>
+        <td><%= movie.trackName %></td>
+        <td><a class="apple-button" href="<%= movie.trackViewUrl %>"></a></td>
+    </tr>
+    <tr >
+        <td colspan="6" class="hiddenRow">
+            <div class="accordian-body collapse" id="<%= movie.trackId %>-toggle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="<%= movie.artworkUrl100 %>">
+                        </div>
+                        <h2 class="movie-title"><%= movie.trackName %>
+                            <small class="text-muted"><%= movie.releaseDate.substring(0,10) %></small>
+                        </h2>
+                        <small><%= movie.contentAdvisoryRating %>
+                            <%= movie.primaryGenreName %>
+                        </small>
+                        <p class="lead"><%= movie.longDescription %></p>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>

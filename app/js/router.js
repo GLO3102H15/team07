@@ -6,13 +6,14 @@ define([
     'views/actor/ActorView',
     'views/watchLists/WatchListsView',
     'views/tvShow/TvShowView',
-    'views/movie/MovieView'
-], function($, _, Backbone, HomeView, ActorView, WatchListsView, TvShowView, MovieView) {
+    'views/movie/MovieView',
+    'views/NavbarView'
+], function($, _, Backbone, HomeView, ActorView, WatchListsView, TvShowView, MovieView, NavbarView) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             'movie': 'showMovie',
-            'actor': 'showActor',
+            'actor/:id': 'showActor',
             'tv-show': 'showTvShow',
             'watch-lists': 'showWatchLists',
 
@@ -20,6 +21,9 @@ define([
             '*actions': 'defaultAction'
         }
     });
+
+    var navbar = new NavbarView();
+    navbar.render();
 
     var initialize = function(){
 
@@ -31,9 +35,8 @@ define([
 
         });
 
-        app_router.on('route:showActor', function () {
-            var param = 347084658; // Chris Pratt. Temporaire...
-            var actorView = new ActorView(param);
+        app_router.on('route:showActor', function (artistId) {
+            var actorView = new ActorView(artistId);
         });
 
 
