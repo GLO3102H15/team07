@@ -12,15 +12,13 @@ define([
 
         template: _.template(actorTemplate),
 
-        initialize: function(id) {
-            var actorView = this;
-            this.artistId = id;
-
-            this.model = new ActorModel({id: id});
-
+        initialize: function(model) {
+            var self = this;
+            this.model = model;
+            this.artistId = model.attributes.artistId;
             this.model.fetch({
                 success: function () {
-                    actorView.render();
+                    self.render();
                 }
             });
 

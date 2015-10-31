@@ -1,0 +1,21 @@
+#watchlist-thumbnails .thumb .edit-watchlist{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#watchlist-thumbnails .thumb .panel-footer {
+    text-align: center;
+}
+
+#watchlist-thumbnails .thumb .panel-footer:hover {
+    border-color: dodgerblue;
+}
+
+#watchlist-thumbnails div.editing-watchlist .thumb .watchlist-name {
+    display: none;
+}
+
+#watchlist-thumbnails div.editing-watchlist .thumb .edit-watchlist {
+    display: block;
+}
