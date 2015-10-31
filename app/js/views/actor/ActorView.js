@@ -11,12 +11,12 @@ define([
 
         template: _.template(actorTemplate),
 
-        initialize: function(id) {
-            var actorView = this;
-            this.model = new ActorModel({id: id});
+        initialize: function(model) {
+            var actorViewScope = this;
+            this.model = model;
             this.model.fetch({
                 success: function () {
-                    actorView.render();
+                    actorViewScope.render();
                 }
             });
         },
