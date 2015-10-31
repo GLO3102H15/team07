@@ -11,9 +11,9 @@ define([
 
         template: _.template(movieTemplate),
 
-        initialize: function(id) {
+        initialize: function(model) {
             var movieViewScope = this;
-            this.model = new MovieModel({id: id});
+            this.model = model;
             this.model.fetch({
                 success: function() {
                     movieViewScope.render();
@@ -22,8 +22,8 @@ define([
         },
 
         render: function(){
-            console.log(this.model.attributes);
             this.$el.html(this.template(this.model.attributes));
+            console.log(this.model.toJSON());
         }
     });
 

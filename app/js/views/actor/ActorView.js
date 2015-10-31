@@ -11,9 +11,9 @@ define([
 
         template: _.template(actorTemplate),
 
-        initialize: function(id) {
+        initialize: function(model) {
             var actorViewScope = this;
-            this.model = new ActorModel({id: id});
+            this.model = model;
             this.model.fetch({
                 success: function () {
                     actorViewScope.render();
