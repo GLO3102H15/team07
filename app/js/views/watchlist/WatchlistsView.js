@@ -58,8 +58,6 @@ define([
         },
 
         addOne: function(watchlist){
-            debugger;
-            console.log(watchlist);
             var view = new WatchlistThumbnailView({model: watchlist});
             this.$('#watchlist-thumbnails').append(view.render().$el);
         },
@@ -69,7 +67,6 @@ define([
         },
 
         addWatchlist: function () {
-            debugger;
             var watchlistName = this.input.val();
             if (!watchlistName) { return; }
             var user = this.watchlists.user;
