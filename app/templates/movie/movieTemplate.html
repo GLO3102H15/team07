@@ -11,8 +11,7 @@
             <small><img class="movie-rating" src="images/RATED_<%= rating %>.svg"> <%= genre %></small>
             <p class="lead"><%= description %></p>
         </div>
-        <div class="col-md-5 col-md-pull-7 preview">
-            <iframe class="video w100" width="480" height="270" src="//www.youtube.com/embed/<%= preview %>" frameborder="0" allowfullscreen></iframe>
+        <div class="col-md-5 col-md-pull-7 preview" id="video-preview">
         </div>
     </div>
     <div class="row movie-buttons">

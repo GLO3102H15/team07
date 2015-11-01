@@ -13,12 +13,10 @@ define([
             description: "",
             rating: "",
             title: "",
-            poster: "",
-            preview: ""
+            poster: ""
         },
         parse: function(data){
             var result = data.results[0];
-            console.log(search(result.trackName));
             return {
                 date: new Date(result.releaseDate),
                 genre: result.primaryGenreName,
@@ -26,8 +24,7 @@ define([
                 description: result.longDescription,
                 rating: result.contentAdvisoryRating,
                 title: result.trackName,
-                poster: result.artworkUrl100.replace(new RegExp('100', 'g'), '1680'),
-                preview: search(result.trackName)
+                poster: result.artworkUrl100.replace(new RegExp('100', 'g'), '1680')
             };
         }
     });

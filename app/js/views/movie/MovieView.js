@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'models/movie/MovieModel',
+    'views/YoutubeView',
     'text!templates/movie/movieTemplate.html'
-], function($, _, Backbone, MovieModel, movieTemplate){
+], function($, _, Backbone, MovieModel, YoutubeView, movieTemplate){
 
     var MovieView = Backbone.View.extend({
         el: $("#page"),
@@ -23,6 +24,8 @@ define([
 
         render: function(){
             this.$el.html(this.template(this.model.attributes));
+
+            this.videoPreview = new YoutubeView(this.model.attributes.title);
         }
     });
 
