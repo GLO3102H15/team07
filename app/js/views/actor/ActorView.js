@@ -15,7 +15,7 @@ define([
         initialize: function(model) {
             var self = this;
             this.model = model;
-            this.artistId = model.attributes.artistId;
+            this.artistId = this.id;
             this.model.fetch({
                 success: function () {
                     self.render();

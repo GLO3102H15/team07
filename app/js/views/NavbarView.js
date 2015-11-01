@@ -28,7 +28,7 @@ define([
                     return;
                 }
 
-                window.location.hash = 'actor/' + data.results[0].artistId.toString();
+                window.location.hash = 'actors/' + data.results[0].artistId.toString();
                 document.getElementById("search-input-field").value = '';
                 document.getElementById("search-input-field").blur();
             }).fail(function() {

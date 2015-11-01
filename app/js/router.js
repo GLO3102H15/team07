@@ -11,10 +11,11 @@ define([
     'models/watchlist/WatchlistModel',
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
+    'views/NavbarView',
     'models/movie/MovieModel'
 ], function($, _, Backbone, HomeView, ActorView, ActorModel,
             WatchlistsView, WatchlistView, WatchlistCollection,
-            WatchlistModel, TvShowView, MovieView, MovieModel) {
+            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -50,14 +51,14 @@ define([
             var tvShowView = new TvShowView();
             tvShowView.render();
         });
-/*
+
         app_router.on('route:showWatchLists', function(){
             // Password: equipe07
             var owner = {"email":"team07@gmail.com","name":"team07","following":[],"id":"5634d66a0986b8030010f59a"}
             var watchlists = new WatchlistCollection(owner);
             var watchlistsView = new WatchlistsView(watchlists);
         });
-*/
+
         app_router.on('route:showWatchList', function(watchlistId){
             var watchlist = new WatchlistModel({id: watchlistId});
             var watchlistView = new WatchlistView(watchlist);
