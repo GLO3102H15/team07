@@ -5,7 +5,6 @@ require.config({
         backbone: 'vendor/backbone/backbone-min',
         text: 'vendor/text/text',
         bootstrap: 'vendor/bootstrap/dist/js/bootstrap.min',
-        gapi: 'vendor/gapi/gapi.min',
         templates: '../templates'
     },
 
