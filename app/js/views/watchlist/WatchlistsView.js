@@ -74,7 +74,7 @@ define([
                 name: watchlistName,
                 owner: user,
                 movies: StubMovieList
-            });
+            }, {wait: true});
         }
     });
 

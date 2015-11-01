@@ -11,7 +11,6 @@ define([
         initialize: function () {
             this.movies = new MovieCollection(this.movies);
             this.movies.url = this.urlRoot + this.id + '/movies';
-            console.log(this.attributes);
         },
 
         default: {
