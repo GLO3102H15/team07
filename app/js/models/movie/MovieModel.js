@@ -1,7 +1,7 @@
 define([
     'underscore',
     'backbone'
-], function(_, Backbone) {
+], function (_, Backbone) {
 
     var MovieModel = Backbone.Model.extend({
         urlRoot: 'https://umovie.herokuapp.com/unsecure/movies/',
@@ -15,7 +15,7 @@ define([
             title: "",
             poster: ""
         },
-        parse: function(data){
+        parse: function (data) {
             var result = data.results[0];
             return {
                 date: new Date(result.releaseDate),
@@ -24,7 +24,7 @@ define([
                 description: result.longDescription,
                 rating: result.contentAdvisoryRating,
                 title: result.trackName,
-                poster: result.artworkUrl100.replace(new RegExp('100', 'g'), '1680')
+                poster: result.artworkUrl100.replace('100x100', '800x800')
             };
         }
     });

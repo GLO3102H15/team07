@@ -16,5 +16,11 @@
     </div>
     <div class="row movie-buttons">
         <a class="apple-button" href="<%= appleURL %>"></a>
+        <select id="watchlist-dropdown" class="form-control">
+            <% watchlists.each(function(watchlist) { %>
+                <option value="<%= watchlist.get('id') %>"><%= watchlist.get('name') %></option>
+            <% }); %>
+        </select>
+        <input class="btn btn-success" type="button" value="Add to watchlist"/>
     </div>
 </div>

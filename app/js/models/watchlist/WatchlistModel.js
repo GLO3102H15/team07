@@ -2,7 +2,7 @@ define([
     'underscore',
     'backbone',
     'collections/movie/MovieCollection'
-], function(_, Backbone, MovieCollection) {
+], function (_, Backbone, MovieCollection) {
 
     var WatchlistModel = Backbone.Model.extend({
 
@@ -19,7 +19,7 @@ define([
             movies: []
         },
 
-        parse: function(response){
+        parse: function (response) {
             var movies = new MovieCollection(response.movies);
             movies.url = this.urlRoot + response.id + '/movies';
             return {
