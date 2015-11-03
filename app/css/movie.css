@@ -27,6 +27,10 @@
     margin-top: 10px;
 }
 
+.row.movie-buttons > div {
+    margin-top:10px;
+}
+
 .row.movie-buttons > .form-control {
     display: inline-block;
     width: 200px;
