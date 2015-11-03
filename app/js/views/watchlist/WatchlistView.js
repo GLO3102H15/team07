@@ -14,21 +14,14 @@ define([
 
         initialize: function (model) {
             this.watchlist = model;
-            this.listenTo(this.watchlist.movies, 'add', this.addOne);
-            this.listenTo(this.watchlist.movies, 'reset', this.addAll);
-            this.listenTo(this.watchlist.movies, 'all', this.render);
+            this.listenTo(this.watchlist, 'change', this.addAll);
             this.$el.html(this.template());
             var that = this;
-            this.watchlist.fetch({
-                success: function() {
-                    console.log(that.watchlist);
-                    console.log(that.watchlist.movies);
-                }
-            });
+            this.watchlist.fetch();
         },
 
         render: function(){
-            if (this.watchlist.movies.length) {
+            if (this.watchlist.get('movies').models.length) {
                 this.$('#watchlist-thumbnails').show();
             } else {
                 this.$('#watchlist-thumbnails').hide();
@@ -41,7 +34,7 @@ define([
         },
 
         addAll: function() {
-            this.watchlist.movies.each(this.addOne, this);
+            _.each(this.watchlist.get('movies').models, this.addOne);
         }
     });
 

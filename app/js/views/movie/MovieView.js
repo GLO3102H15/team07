@@ -39,7 +39,7 @@ define([
 
         render: function () {
             var values = this.model.attributes;
-            values['watchlists'] = this.watchlists;
+            values['watchlists'] = this.watchlists.getWatchlistsWithoutMovie(this.model.get('trackId'));
             this.$el.html(this.template(values));
             this.videoPreview = new YoutubeView(this.model.get('trackName'));
         },

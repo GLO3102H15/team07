@@ -23,7 +23,22 @@ define([
                 }
             });
             return userWatchlists;
+        },
+
+        getWatchlistsWithoutMovie: function(movieId) {
+            var watchlists = _.filter(this.models, function (watchlist) {
+                if (_.some(watchlist.get('movies').models, function(movie){
+                        movie.get('trackId') === movieId;
+                    })
+                ){
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+            return new WatchlistCollection(watchlists);
         }
+
     });
 
     return WatchlistCollection;

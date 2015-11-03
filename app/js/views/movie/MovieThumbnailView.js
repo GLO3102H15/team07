@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/movie/movieThumbnailTemplate.html'
-], function($, _, Backbone, movieThumbnailTemplate){
+    'text!templates/movie/movieThumbnailTemplate.html',
+    'models/movie/MovieModel'
+], function($, _, Backbone, movieThumbnailTemplate, MovieModel){
 
     var WatchlistThumbnailView  = Backbone.View.extend({
 
@@ -20,6 +21,7 @@ define([
         },
 
         render: function() {
+            this.model.attributes = this.model.parse({results: [this.model.attributes]});
             this.$el.html(this.template(this.model.toJSON()));
             console.log(this.model.attributes);
             console.log(this.$el);
@@ -27,7 +29,7 @@ define([
         },
 
         clear: function () {
-            this.model.destroy();
+            this.model.destroy({url: this.model.collection.url + '/' + this.model.get('trackId')});
         }
     });
 

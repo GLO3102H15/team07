@@ -16,6 +16,7 @@
     </div>
     <div class="row movie-buttons">
         <select id="watchlist-dropdown" class="form-control">
+            <option value="" selected disabled>Please select</option>
             <% watchlists.each(function(watchlist) { %>
                 <option value="<%= watchlist.get('id') %>"><%= watchlist.get('name') %></option>
             <% }); %>
