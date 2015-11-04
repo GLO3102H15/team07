@@ -9,7 +9,7 @@ define([
         template: _.template(TvEpisodeTemplate),
 
         initialize: function (collectionId) {
-            console.log(collectionId);
+
             this.model = new EpisodeModel({collectionId: collectionId});
             this.model.set("collectionId", collectionId);
 
@@ -30,9 +30,9 @@ define([
 
         render: function() {
             //console.log(this.model.attributes);
-            console.log(this.template({tvShows: this.tvShow.attributes.results}));
 
-            $("#tv-show-episode").html(this.template({tvShows: this.tvShow.attributes.results}));
+
+            $(".episode-list").html(this.template({tvShows: this.tvShow.attributes.results}));
             //console.log(this.model.attributes.results[5]);
 
             return this;

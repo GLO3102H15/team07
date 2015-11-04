@@ -51,12 +51,8 @@ define([
         });
 
         app_router.on('route:showTvShow', function (tvShowId) {
-            console.log("allo");
             var tvShow = new TvShowModel({id: tvShowId});
             var tvShowView = new TvShowView(tvShow);
-
-            console.log("allo2");
-
         });
 
         app_router.on('route:showWatchLists', function(){

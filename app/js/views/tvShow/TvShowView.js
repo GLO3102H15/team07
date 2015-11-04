@@ -32,7 +32,6 @@ define([
                     this.episodesView = new EpisodeView(self.artistId);
                 }
             });
-            console.log(this.artistId);
 
 
 
@@ -43,14 +42,12 @@ define([
         },
 
         render: function () {
-            console.log("dans render view tv show");
 
             var values = this.tvShowModel;
 
 
             this.$el.html(this.template(this.tvShowModel.toJSON()));
 
-            console.log(this.$el);
 
 
 
@@ -58,7 +55,7 @@ define([
 
 
 
-            this.videoPreview = new YoutubeView(this.tvShowModel.get('trackName'));
+            this.videoPreview = new YoutubeView(this.tvShowModel.get('collectionName'));
             return this;
         }
     });

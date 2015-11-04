@@ -1,15 +1,12 @@
-<div>
+<ul>
     <% _.each(tvShows, function(episode) { %>
-
-    <div class="episode">
-        <div class="episode-title"><%= episode.trackName %></div>
-
-    </div>
-</div>
-
-</div>
-
+    <li>
+        <div class="episode">
+            <img src="<%= episode.artworkUrl60 %>">
+            <div class="episode-title"><%= episode.trackName %></div>
+        </div>
+    </li>
 
 <% }); %>
 
-</div>
+</ul>

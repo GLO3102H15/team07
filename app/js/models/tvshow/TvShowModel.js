@@ -11,8 +11,6 @@ define([
             resultatTvShow['id'] = data.collectionId;
             resultatTvShow['date'] = new Date(data.releaseDate);
             resultatTvShow['poster'] = resultatTvShow.artworkUrl100.replace('100x100', '800x800');
-            console.log(resultatTvShow.collectionId);
-            console.log(resultatTvShow.collectionName);
 
 
 
