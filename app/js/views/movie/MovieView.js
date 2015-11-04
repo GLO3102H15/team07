@@ -47,9 +47,12 @@ define([
         addToWatchlist: function () {
             var watchlistID = $('#watchlist-dropdown').val();
             if (watchlistID !== null){
-                var watchlist = new WatchlistModel({id: watchlistID});
+                var watchlist =  this.watchlists.get(watchlistID);
+                //var watchlist = new WatchlistModel({id: watchlistID});
                 this.model.unset('id');
                 watchlist.movies.create(this.model.attributes, {url: watchlist.movies.url});
+                //var modelScope = this;
+                //this.watchlists.fetch({success: modelScope.renderView});
             }
         }
     });
