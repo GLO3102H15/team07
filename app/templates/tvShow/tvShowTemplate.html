@@ -1,180 +1,48 @@
-<div class="container tv-show">
+<!--<div class="container">-->
+    <!--<div class="row">-->
+
+    <!--</div>-->
+    <!--<div class="row featurette">-->
+        <!--<div class="col-md-6 col-md-push-6">-->
+            <!--<h2><%= id %> <small class="text-muted"><%= id %></small>-->
+            <!--</h2>-->
+            <!--<small><img class="movie-rating" src="images/RATED_<%= contentAdvisoryRating %>.svg"> <%= id %></small>-->
+            <!--<p class="lead"><%= id %></p>-->
+        <!--</div>-->
+        <!--<div class="col-md-6 col-md-pull-6 preview" id="video-preview">-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="container">
     <div class="row">
-        <div class="col-l2g-1 tv-banner">
-            <img src="http://www.blastr.com/sites/blastr/files/firefly-serenity-crew.jpg">
+        <div class="col-lg-1 movie-poster">
+            <img src="<%= poster %>">
         </div>
     </div>
-    <div class="row tv-info">
-        <div class="col-md-7 col-md-push-5">
-            <h2 class="">Firefly
-                <small class="text-muted">September 20th 2002</small>
+    <div class="row featurette">
+        <div class="col-md-6 col-md-push-6">
+            <h2 class="movie-title"><%- collectionName %> <small class="text-muted"><%= date.toDateString() %></small>
             </h2>
-            <small>Fantasy and Sci-fi</small>
-            <p class="lead">Five hundred years in the future there's a whole new frontier, and the crew of the
-                Firefly-class spaceship, Serenity, is eager to stake a claim on the action. They'll take any job,
-                legal
-                or illegal, to keep fuel in the tanks and food on the table. But things get a bit more complicated
-                after
-                they take on a passenger wanted by the new totalitarian Alliance regime. Now they find themselves on
-                the
-                run, desperate to steer clear of Alliance ships and the flesh-eating Reavers who live on the fringes
-                of
-                space.</p>
+            <small><img class="movie-rating" src="images/RATED_<%= contentAdvisoryRating %>.svg"> <%= primaryGenreName %></small>
+            <p class="lead"><%= longDescription %></p>
         </div>
-        <div class="col-md-5 col-md-pull-7 preview" id="video-preview">
-            <!--<a><iframe width="420" height="315" src="https://www.youtube.com/embed/mG9bSBGLtMc?autoplay=0"
-                       frameborder="0" allowfullscreen></iframe>
-            </a>-->
-        </div>
-        <div class="col-md-12 episode-list">
-            <ul>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Serenity</div>
-                            <div class="episode-number">Episode 1</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">The Train Job</div>
-                            <div class="episode-number">Episode 2</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Bushwhacked</div>
-                            <div class="episode-number"> Episode 3</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Shindig</div>
-                            <div class="episode-number">Episode 4</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Safe</div>
-                            <div class="episode-number">Episode 5</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Our Mrs. Reynolds</div>
-                            <div class="episode-number">Episode 6</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Jaynestown</div>
-                            <div class="episode-number">Episode 7</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Out of Gas</div>
-                            <div class="episode-number">Episode 8</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Ariel</div>
-                            <div class="episode-number">Episode 9</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">War Stories</div>
-                            <div class="episode-number">Episode 10</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Trash</div>
-                            <div class="episode-number">Episode 11</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">The Message</div>
-                            <div class="episode-number">Episode 12</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Heart of Gold</div>
-                            <div class="episode-number">Episode 13</div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="episode">
-                            <img src="http://a4.mzstatic.com/us/r30/Music/v4/e8/32/df/e832dfb9-34ee-a59d-1b4b-f0ad918b20f1/cover75x75.jpeg">
-
-                            <div class="episode-title">Objects In Space</div>
-                            <div class="episode-number">Episode 14</div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+        <div class="col-md-6 col-md-pull-6 preview" id="video-preview">
         </div>
     </div>
+    <div class="row movie-buttons">
+        <select id="watchlist-dropdown" class="form-control">
+            <option value="" selected disabled>Please select</option>
+            <% watchlists.each(function(watchlist) { %>
+            <option value="<%= watchlist.get('id') %>"><%= watchlist.get('name') %></option>
+            <% }); %>
+        </select>
+        <input class="btn btn-success" type="button" value="Add to watchlist"/>
+        <div><a class="apple-button" href="<%= trackViewUrl %>"></a></div>
 
+    </div>
+</div>
 
-</div>
-<div class="row button">
-    <a class="apple-button"
-       href="https://geo.itunes.apple.com/ca/tv-season/firefly-the-complete-series/id151801083?mt=4"></a>
-</div>
+<script src="js/models/tvshow/TvShowModel.js"></script>
+<script src="js/collections/tvshow/TvShowCollection.js"></script>
+<script src="js/views/tvShow/TvShowView.js"></script>
