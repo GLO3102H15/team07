@@ -17,6 +17,7 @@ define([
 
 
         initialize: function (tvmodel) {
+            var self = this;
 
             var tvShowViewScope = this;
             this.tvShowModel = tvmodel;
@@ -28,11 +29,12 @@ define([
             this.tvShowModel.fetch({
                 success: function () {
                     tvShowViewScope.render();
+                    this.episodesView = new EpisodeView(self.artistId);
                 }
             });
             console.log(this.artistId);
 
-            this.episodesView = new EpisodeView(this.artistId);
+
 
             return this;
 
