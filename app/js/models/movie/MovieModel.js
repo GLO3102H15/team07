@@ -6,12 +6,25 @@ define([
     var MovieModel = Backbone.Model.extend({
         urlRoot: 'https://umovie.herokuapp.com/unsecure/movies/',
         parse: function (data) {
-            var result = data.results[0];
+            var result;
+            if(_.has(data, 'results')) {
+                result = data.results[0];
+            } else if (_.has(data, 'movies')) {
+                lastIndex = data.movies.length - 1;
+                result = data.movies[lastIndex];
+            } else {
+                return {};
+            }
+
             result['id'] = result.trackId;
             result['date'] = new Date(result.releaseDate);
             result['poster'] = result.artworkUrl100.replace('100x100', '800x800');
             result['thumbnail'] = result.artworkUrl100.replace('100x100', '400x300');
             return result;
+        },
+
+        isMovie: function (movieId) {
+            return this.get('trackId') === movieId;
         }
     });
 

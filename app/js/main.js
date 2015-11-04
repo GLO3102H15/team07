@@ -3,6 +3,7 @@ require.config({
         jquery: 'vendor/jquery/dist/jquery.min',
         underscore: 'vendor/underscore/underscore-min',
         backbone: 'vendor/backbone/backbone-min',
+        backboneRelational: 'vendor/backbone-relational/backbone-relational',
         text: 'vendor/text/text',
         bootstrap: 'vendor/bootstrap/dist/js/bootstrap.min',
         templates: '../templates'

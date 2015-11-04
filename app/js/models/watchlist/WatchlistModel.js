@@ -28,6 +28,20 @@ define([
                 owner: response.owner,
                 movies: movies
             };
+        },
+
+        hasMovie: function (movieId) {
+            var result = _.some(this.get('movies').models, function(movie){
+                return movie.isMovie(movieId);
+            });
+            return result;
+        },
+
+        randomizeThumbnailCover: function () {
+            if (this.movies.length) {
+                var movie = _.sample(this.movies);
+                this.thumbnail = movie.thumbnail;
+            }
         }
     });
 
