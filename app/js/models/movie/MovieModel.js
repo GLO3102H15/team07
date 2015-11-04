@@ -4,7 +4,9 @@ define([
 ], function (_, Backbone) {
 
     var MovieModel = Backbone.Model.extend({
+
         urlRoot: 'https://umovie.herokuapp.com/unsecure/movies/',
+
         parse: function (data) {
             var result;
             if(_.has(data, 'results')) {

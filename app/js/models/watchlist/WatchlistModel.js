@@ -5,8 +5,8 @@ define([
 ], function (_, Backbone, MovieCollection) {
 
     var WatchlistModel = Backbone.Model.extend({
-
         urlRoot: 'https://umovie.herokuapp.com/unsecure/watchlists/',
+
 
         initialize: function () {
             this.movies = new MovieCollection(this.movies);
@@ -30,10 +30,12 @@ define([
             };
         },
 
+
         hasMovie: function (movieId) {
-            var result = _.some(this.get('movies').models, function(movie){
+            var result =  _.some(this.get('movies').models, function(movie){
                 return movie.isMovie(movieId);
             });
+
             return result;
         },
 
