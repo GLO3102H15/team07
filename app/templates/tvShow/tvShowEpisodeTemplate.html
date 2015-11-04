@@ -1,16 +1,19 @@
+<div>
+    <% _.each(tvShows, function(episode) { %>
+    <div>
+        <div class="episode">
+            <div class="episode-title"><% episode.artistId %></div>
 
-<div class="row featurette">
-    <div class="col-md-6 col-md-push-6">
-        <h2><%= collectionName %> <small class="text-muted"><%= "trackName" %></small>
-        </h2>
-
+        </div>
 
     </div>
-    <div class="col-md-6 col-md-pull-6 preview" id="video-preview">
-    </div>
+
+    <% }); %>
+
 </div>
 
+
 <!-- Scripts need to be at the end for templating ! -->
-<script src="js/models/tvshow/TvShowModel.js"></script>
+<script src="js/models/tvshow/EpisodeModel.js"></script>
 <script src="js/collections/tvshow/TvShowCollection.js"></script>
-<script src="js/views/tvShow/TvShowView.js"></script>
+<script src="js/views/tvShow/EpisodeView.js"></script>

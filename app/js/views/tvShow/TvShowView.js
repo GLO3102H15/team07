@@ -14,26 +14,7 @@ define([
 
         template: _.template(tvShowTemplate),
 
-        //render: function(){
-        //    this.$el.html(tvShowTemplate);
-        //    this.videoPreview = new YoutubeView("Firefly");
-        //    //var posts = {"posts": this.model.toJSON()};
-        //    //var template = _.template($("#tpl_SetView").html(), posts);
-        //}
-        //initialize: function () {
-        //    // You'll see the `_.bindAll()` function in almost every `initialize`.
-        //    // See this StackOverflow [answer](http://stackoverflow.com/a/6396224/884338 "JSONP") to why `_.bindAll()` is necessary.
-        //    _.bindAll(this, 'render');
-        //
-        //    // Keep `this` in a variable to use in a different scope (as in `this.collection.bind()` ).
-        //    var self = this;
-        //
-        //    // We want the view to render itself each time the model is changed.
-        //    // We can bind to any events like this.
-        //    //this.collection.bind('artistName', function () {
-        //    //    self.render();
-        //    //});
-        //},
+
 
         initialize: function (tvmodel) {
 
@@ -49,6 +30,7 @@ define([
                     tvShowViewScope.render();
                 }
             });
+            console.log(this.artistId);
 
             this.episodesView = new EpisodeView(this.artistId);
 
@@ -63,20 +45,18 @@ define([
 
             var values = this.tvShowModel;
 
-            this.tvShowModel.attributes = this.tvShowModel.parse({results: [this.model.attributes]});
+
             this.$el.html(this.template(this.tvShowModel.toJSON()));
-            console.log(this.tvShowModel.attributes);
+
             console.log(this.$el);
 
-
-            console.log(values.longDescription);
-            console.log(this.tvShowModel.longDescription);
 
 
             //this.$el.html(this.template(values));
 
 
-            this.videoPreview = new YoutubeView(this.model.get('trackName'));
+
+            this.videoPreview = new YoutubeView(this.tvShowModel.get('trackName'));
             return this;
         }
     });

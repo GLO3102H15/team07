@@ -2,7 +2,7 @@ define(['underscore',
     'backbone'
 ], function(_, Backbone) {
     var EpisodeModel = Backbone.Model.extend({
-        urlRoot: function () {
+        urlRoot: function (id) {
             return 'https://umovie.herokuapp.com/unsecure/tvShows/season/' + this.attributes.collectionId + "/episodes";
         },
         defaults: {
