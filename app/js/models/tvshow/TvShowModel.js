@@ -11,32 +11,8 @@ define([
             resultatTvShow['id'] = data.collectionId;
             resultatTvShow['date'] = new Date(data.releaseDate);
             resultatTvShow['poster'] = resultatTvShow.artworkUrl100.replace('100x100', '800x800');
-
-
-
             return resultatTvShow;
         }
-
-
-        //initialize: function () {
-        //    this.movies = new TvShowCollection(this.movies);
-        //    this.movies.url = this.urlRoot + this.id + '/episodes';
-        //},
-        //
-        //
-        //
-        //parse: function (response) {
-        //    var movies = new TvShowCollection(response.movies);
-        //    movies.url = this.urlRoot + response.id + '/movies';
-        //    return {
-        //        id: response.id,
-        //        name: response.name,
-        //        owner: response.owner,
-        //        movies: movies
-        //    };
-        //}
-
-
     });
 
     return TvShowModel;

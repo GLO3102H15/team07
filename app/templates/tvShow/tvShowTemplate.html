@@ -1,6 +1,4 @@
 
-
-
 <div class="container">
     <div class="row">
         <div class="col-lg-1 movie-poster">
@@ -9,21 +7,20 @@
     </div>
     <div class="row featurette">
         <div class="col-md-6 col-md-push-6">
-            <h2 class="movie-title"><%= collectionName %> <small class="text-muted"><%= releaseDate.toString() %></small>
+            <h2 class="movie-title"><%= collectionName %> <small class="text-muted"><%= releaseDate.substring(0,10) %></small>
             </h2>
-
+            <small> <img class="tv-rating" src="images/TV-14.svg"><%= primaryGenreName %></small>
             <p class="lead"><%= longDescription %></p>
         </div>
         <div class="col-md-6 col-md-pull-6 preview" id="video-preview">
         </div>
     </div>
-    <div class="col-md-12 episode-list">
-
-
-
+    <div class="row">
+        <div class="col-md-12 episode-list" id="tv-show-episode">
+    </div>
+    </div>
+    <div class="row button">
+        <a class="apple-button" href="<%= collectionViewUrl %>"></a>
     </div>
 </div>
 
-<script src="js/models/tvshow/TvShowModel.js"></script>
-<script src="js/collections/tvshow/TvShowCollection.js"></script>
-<script src="js/views/tvShow/TvShowView.js"></script>

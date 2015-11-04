@@ -32,7 +32,6 @@
 
 .episode-list  a{
     text-decoration: none;
-
 }
 
 .episode {
@@ -40,7 +39,6 @@
     width: 110px;
     height: 150px;
 }
-
 
 .episode-title{
     font-weight: bold;
@@ -54,4 +52,8 @@
 .row.button {
     text-align: center;
     margin-top: 20px;
+}
+.tv-rating {
+    max-height:30px;
+    max-width: 30px;
 }
