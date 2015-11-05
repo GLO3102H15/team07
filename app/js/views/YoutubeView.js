@@ -25,7 +25,7 @@ define([
             // execute the request
             request.execute(function (response) {
                 $("#video-preview").html(
-                    '<iframe class="video w100" width="480" height="270" src="//www.youtube.com/embed/' +
+                    '<iframe class="video w100" width="550" height="310" src="//www.youtube.com/embed/' +
                     response.result.items[0].id.videoId +
                     '" frameborder="0" allowfullscreen></iframe>'
                 );

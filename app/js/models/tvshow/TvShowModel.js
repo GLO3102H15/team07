@@ -8,9 +8,15 @@ define([
         urlRoot: 'https://umovie.herokuapp.com/unsecure/tvshows/season/',
         parse: function (data) {
             var resultatTvShow = data.results[0];
+            console.info(resultatTvShow);
             resultatTvShow['id'] = data.collectionId;
             resultatTvShow['date'] = new Date(data.releaseDate);
             resultatTvShow['poster'] = resultatTvShow.artworkUrl100.replace('100x100', '800x800');
+            if ("contentAdvisoryRating" in resultatTvShow){
+                resultatTvShow['rating'] = resultatTvShow.contentAdvisoryRating;
+            }else{
+                resultatTvShow['rating'] = "TV-G"
+            }
             return resultatTvShow;
         }
     });

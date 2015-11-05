@@ -9,7 +9,7 @@
         <div class="col-md-6 col-md-push-6">
             <h2 class="movie-title"><%= collectionName %> <small class="text-muted"><%= releaseDate.substring(0,10) %></small>
             </h2>
-            <small> <img class="tv-rating" src="images/TV-14.svg"><%= primaryGenreName %></small>
+            <small> <img class="tv-rating" src="images/<%= rating %>.svg">  <%= primaryGenreName %></small>
             <p class="lead"><%= longDescription %></p>
         </div>
         <div class="col-md-6 col-md-pull-6 preview" id="video-preview">
