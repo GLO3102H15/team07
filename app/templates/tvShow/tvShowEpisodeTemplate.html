@@ -2,7 +2,10 @@
     <% _.each(tvShows, function(episode) { %>
     <li>
         <div class="episode">
-            <img src="<%= episode.artworkUrl100 %>">
+            <a href="<%= episode.trackViewUrl %>">
+                <img src="<%= episode.artworkUrl100 %>">
+            </a>
+
             <div class="episode-title"><%= episode.trackName %></div>
         </div>
     </li>
