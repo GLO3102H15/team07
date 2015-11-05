@@ -40,6 +40,7 @@ define([
         Backbone.View.prototype.destroyView = function() {
             this.undelegateEvents();
             this.$el.empty();
+            delete this;
         };
 
         app_router.on('route:showMovie', function(movieId){
