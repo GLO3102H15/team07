@@ -48,11 +48,10 @@ define([
             var watchlistID = $('#watchlist-dropdown').val();
             if (watchlistID !== null){
                 var watchlist =  this.watchlists.get(watchlistID);
-                //var watchlist = new WatchlistModel({id: watchlistID});
                 this.model.unset('id');
+                this.model.unset('watchlists');
                 watchlist.movies.create(this.model.attributes, {url: watchlist.movies.url});
-                //var modelScope = this;
-                //this.watchlists.fetch({success: modelScope.renderView});
+                $("#watchlist-dropdown option:selected").remove();
             }
         }
     });

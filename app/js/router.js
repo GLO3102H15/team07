@@ -37,31 +37,44 @@ define([
 
         var app_router = new AppRouter;
 
+        Backbone.View.prototype.destroyView = function() {
+            this.undelegateEvents();
+            this.$el.empty();
+        };
+
         app_router.on('route:showMovie', function(movieId){
+            if(this.currentView) {this.currentView.destroyView();}
             var movie = new MovieModel({id: movieId});
             var movieView = new MovieView(movie);
+            this.currentView = movieView;
         });
 
         app_router.on('route:showActor', function (actorId) {
+            if(this.currentView) {this.currentView.destroyView();}
             var actor = new ActorModel({id: actorId});
             var actorView = new ActorView(actor);
+            this.currentView = actorView;
         });
 
         app_router.on('route:showTvShow', function () {
+            if(this.currentView) {this.currentView.destroyView();}
             var tvShowView = new TvShowView();
             tvShowView.render();
+            this.currentView = tvShowView;
         });
 
         app_router.on('route:showWatchLists', function(){
+            if(this.currentView) {this.currentView.destroyView();}
             // Password: equipe07
             var owner = {"email":"team07@gmail.com","name":"team07","following":[],"id":"5634d66a0986b8030010f59a"}
-            var watchlists = new WatchlistCollection(owner);
-            var watchlistsView = new WatchlistsView(watchlists);
+            var watchlistsView = new WatchlistsView(new WatchlistCollection(owner));
+            this.currentView = watchlistsView;
         });
 
         app_router.on('route:showWatchList', function(watchlistId){
-            var watchlist = new WatchlistModel({id: watchlistId});
-            var watchlistView = new WatchlistView(watchlist);
+            if(this.currentView) {this.currentView.destroyView();}
+            var watchlistView = new WatchlistView(new WatchlistModel({id: watchlistId}));
+            this.currentView = watchlistView;
         });
 
         app_router.on('route:defaultAction', function (actions) {
