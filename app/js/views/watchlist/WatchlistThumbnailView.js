@@ -21,6 +21,7 @@ define([
         },
 
         render: function() {
+            this.model.attributes['thumbnail'] = this.model.randomizeThumbnailCover();
             this.$el.html(this.template(this.model.toJSON()));
             this.input = this.$('.edit-watchlist');
             return this;

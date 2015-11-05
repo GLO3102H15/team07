@@ -6,7 +6,7 @@ define([
     'collections/watchlist/WatchlistCollection',
     'models/watchlist/WatchlistModel',
     'views/YoutubeView',
-    'text!templates/movie/movieTemplate.html',
+    'text!templates/movie/movieTemplate.html'
 ], function ($, _, Backbone, MovieModel, WatchlistCollection, WatchlistModel, YoutubeView, movieTemplate) {
 
     var MovieView = Backbone.View.extend({
@@ -15,7 +15,7 @@ define([
         template: _.template(movieTemplate),
 
         events: {
-            "click .movie-buttons .btn": "addToWatchlist",
+            "click .movie-buttons .btn": "addToWatchlist"
         },
 
         initialize: function (model) {
@@ -27,7 +27,7 @@ define([
                 "name": "team07",
                 "following": [],
                 "id": "5634d66a0986b8030010f59a"
-            }
+            };
             this.watchlists = new WatchlistCollection(owner);
 
             var renderView = _.after(2, function () {
@@ -47,9 +47,11 @@ define([
         addToWatchlist: function () {
             var watchlistID = $('#watchlist-dropdown').val();
             if (watchlistID !== null){
-                var watchlist = new WatchlistModel({id: watchlistID});
+                var watchlist =  this.watchlists.get(watchlistID);
                 this.model.unset('id');
+                this.model.unset('watchlists');
                 watchlist.movies.create(this.model.attributes, {url: watchlist.movies.url});
+                $("#watchlist-dropdown option:selected").remove();
             }
         }
     });
