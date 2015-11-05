@@ -16,7 +16,6 @@ define([
             this.watchlist = model;
             this.listenTo(this.watchlist, 'change', this.addAll);
             this.$el.html(this.template());
-            var that = this;
             this.watchlist.fetch();
         },
 

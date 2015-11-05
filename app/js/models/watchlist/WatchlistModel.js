@@ -40,10 +40,13 @@ define([
         },
 
         randomizeThumbnailCover: function () {
-            if (this.movies.length) {
-                var movie = _.sample(this.movies);
-                this.thumbnail = movie.thumbnail;
+            var thumbnail = "images/emptyBasket.jpg";
+            var movies = this.get('movies').models;
+            if (movies.length) {
+                var movie = _.sample(movies);
+                thumbnail = movie.attributes.artworkUrl100.replace('100x100', '400x300');
             }
+            return thumbnail;
         }
     });
 
