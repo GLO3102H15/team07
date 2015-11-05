@@ -30,9 +30,6 @@ define([
         }
     });
 
-    var navbar = new NavbarView();
-    navbar.render();
-
     var initialize = function(){
 
         Backbone.View.prototype.destroyView = function() {
@@ -88,6 +85,9 @@ define([
             var homeView = new HomeView();
             homeView.render();
         });
+
+        var navbar = new NavbarView();
+        navbar.render();
 
         Backbone.history.start();
     };
