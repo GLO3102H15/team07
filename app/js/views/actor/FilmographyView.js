@@ -23,7 +23,8 @@ define([
         },
 
         render: function() {
-            $("#actor-filmography").html(this.template({movies: this.movies.changed.results}));
+            var sortedMovies = _.sortBy(this.movies.changed.results, 'releaseDate');
+            $("#actor-filmography").html(this.template({movies: sortedMovies}));
             return this;
         }
     });
