@@ -1,8 +1,18 @@
-Les fichiers html correspondent aux livrables demandés:
+Lancer l'application:
+	Lancer le fichier /team07/app/index.html dans Webstorm.
 
-- index.html
-- actor.html
-- movie.html
-- tvshow.html
+URLS Pertinents:
+	/team07/app/#movies/:id
+	/team07/app/#actors/:id
+	/team07/app/#tv-show/:id
+	/team07/app/#watchlists
+	/team07/app/#watchlists/:id
 
-N.-B. : Les boutons dans le carousel pour les minions et Friends ne fonctionnent pas, car ils n'ont pas de pages associés (de façon hardcodée), mais les autres oui.
+Boutons:
+	Pour accéder aux pages mentionnées ci-dessus, vous pouvez cliquer sur les boutons dans le carousel. Le bouton de Chris 		Pratt correspond à sa page d'acteur, les boutons The Martian et Minions correspondent à leur page de film et les boutons 		Firefly et Friends correspondent à leur page de tv-show.
+	Pour accéder aux watchlists, le lien est dans le menu (navbar) au dessus de la page.
+	
+Watchlists:
+	Pour ajouter un film à une watchlist, accéder à la page du film, sélectionner la watchlist dans le bas et appuyer sur le 	 bouton d'ajout.
+	Pour renommer une watchlist, simplement double-cliquer son nom.
+	Pour effacer une watchlist ou enlever un film d'une watchlist, cliquer sur le X dans le coin droit des thumbnails.
