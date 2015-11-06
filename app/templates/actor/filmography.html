@@ -23,7 +23,7 @@
                         <div class="col-md-1">
                             <img src="<%= movie.artworkUrl100 %>">
                         </div>
-                        <h2 class="movie-title"><%= movie.trackName %>
+                        <h2 class="movie-title"><a href="#movies/<%= movie.trackId %>"><%= movie.trackName %></a>
                             <small class="text-muted"><%= movie.releaseDate.substring(0,10) %></small>
                         </h2>
                         <small><%= movie.contentAdvisoryRating %>

@@ -39,6 +39,7 @@ define([
                 if(data.results[0]) {
                     if (data.results[0].profile_path) {
                         document.getElementById("actor-pic").src = movieDbApiImgPath + data.results[0].profile_path;
+                        document.getElementById("actorBackground").setAttribute("style", "background-image: url(" + movieDbApiImgPath + data.results[0].profile_path + ")");
                     }
                     if (data.results[0].id) {
                         $.get(movieDbApiUrl + "/person/" + data.results[0].id + movieDbApiKey).done(function (data) {
