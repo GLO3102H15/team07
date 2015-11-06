@@ -12,16 +12,17 @@ define([
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
     'views/NavbarView',
-    'models/movie/MovieModel'
-], function($, _, Backbone, HomeView, ActorView, ActorModel,
-            WatchlistsView, WatchlistView, WatchlistCollection,
-            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel) {
+    'models/movie/MovieModel',
+    'models/tvshow/TvShowModel',
+    'collections/tvshow/TvShowCollection'
+], function($, _, Backbone, HomeView, ActorView, ActorModel,WatchlistsView, WatchlistView, WatchlistCollection,
+            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, TvShowCollection) {
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             'movies/:movieId': 'showMovie',
             'actors/:actorId': 'showActor',
-            'tv-show': 'showTvShow',
+            'tv-show/:tvShowId': 'showTvShow',
             'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
 
@@ -60,10 +61,10 @@ define([
             this.currentView = actorView;
         });
 
-        app_router.on('route:showTvShow', function () {
+        app_router.on('route:showTvShow', function (tvShowId) {
             viewCleanup(this.currentView);
-            var tvShowView = new TvShowView();
-            tvShowView.render();
+            var tvShow = new TvShowModel({id: tvShowId});
+            var tvShowView = new TvShowView(tvShow);
             this.currentView = tvShowView;
         });
 

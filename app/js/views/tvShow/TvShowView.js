@@ -29,11 +29,8 @@ define([
         },
 
         render: function () {
-            var values = this.tvShowModel;
-
             this.$el.html(this.template(this.tvShowModel.toJSON()));
             this.videoPreview = new YoutubeView(this.tvShowModel.get('collectionName'));
-            return this;
         }
     });
 
