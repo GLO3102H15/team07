@@ -14,9 +14,23 @@ define([
     'views/NavbarView',
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
-    'collections/tvshow/TvShowCollection'
+    'views/login/LoginView'
 ], function($, _, Backbone, HomeView, ActorView, ActorModel,WatchlistsView, WatchlistView, WatchlistCollection,
-            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, TvShowCollection) {
+            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, LoginView) {
+
+
+    Backbone.View.prototype.destroyView = function() {
+        this.undelegateEvents();
+        this.$el.empty();
+        delete this;
+    };
+
+    $(document).ajaxSend(function(e, xhr, options) {
+        var user = localStorage.getItem('user');
+        if(user){
+            xhr.setRequestHeader("Authorization", JSON.parse(user).token);
+        }
+    });
 
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -25,6 +39,8 @@ define([
             'tv-show/:tvShowId': 'showTvShow',
             'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
+            'login': 'showLogin',
+            'logout': 'logout',
 
             // Default
             '*actions': 'defaultAction'
@@ -32,63 +48,65 @@ define([
     });
 
     var initialize = function(){
-
-        Backbone.View.prototype.destroyView = function() {
-            this.undelegateEvents();
-            this.$el.empty();
-            delete this;
-        };
-
-        var viewCleanup = function (lastView) {
-            if(lastView) {
-                lastView.destroyView();
-            }
-        };
-
         var app_router = new AppRouter;
 
+        app_router.initializeView = function (View, model, requiresAuth) {
+            if(this.currentView) {
+                this.currentView.destroyView();
+            }
+            var user = localStorage.getItem('user');
+            if(requiresAuth && !user) {
+                View = LoginView;
+                model = null;
+            }
+
+            if(user && !this.navbar) {
+                this.navbar = new NavbarView();
+            } else if (!user && this.navbar){
+                this.navbar.destroyView();
+                this.navbar = null;
+            }
+            this.currentView = new View(model);
+        };
+
         app_router.on('route:showMovie', function(movieId){
-            viewCleanup(this.currentView);
             var movie = new MovieModel({id: movieId});
-            var movieView = new MovieView(movie);
-            this.currentView = movieView;
+            this.initializeView(MovieView, movie, true);
         });
 
         app_router.on('route:showActor', function (actorId) {
-            viewCleanup(this.currentView);
             var actor = new ActorModel({id: actorId});
-            var actorView = new ActorView(actor);
-            this.currentView = actorView;
+            this.initializeView(ActorView, actor, true);
         });
 
         app_router.on('route:showTvShow', function (tvShowId) {
-            viewCleanup(this.currentView);
             var tvShow = new TvShowModel({id: tvShowId});
-            var tvShowView = new TvShowView(tvShow);
-            this.currentView = tvShowView;
+            this.initializeView(TvShowView, tvShow, true);
         });
 
         app_router.on('route:showWatchLists', function(){
-            viewCleanup(this.currentView);
-            // Password: equipe07
-            var owner = {"email":"team07@gmail.com","name":"team07","following":[],"id":"5634d66a0986b8030010f59a"}
-            var watchlistsView = new WatchlistsView(new WatchlistCollection(owner));
-            this.currentView = watchlistsView;
+            var user = JSON.parse(localStorage.getItem('user'));
+            var collection = new WatchlistCollection(user);
+            this.initializeView(WatchlistsView, collection, true);
         });
 
         app_router.on('route:showWatchList', function(watchlistId){
-            viewCleanup(this.currentView);
-            var watchlistView = new WatchlistView(new WatchlistModel({id: watchlistId}));
-            this.currentView = watchlistView;
+            var model = new WatchlistModel({id: watchlistId});
+            this.initializeView(WatchlistView, model, true);
+        });
+
+        app_router.on('route:showLogin', function(){
+            this.initializeView(LoginView, null, false);
+        });
+
+        app_router.on('route:logout', function(){
+            localStorage.removeItem('user');
+            this.initializeView(LoginView, null, false);
         });
 
         app_router.on('route:defaultAction', function (actions) {
-            var homeView = new HomeView();
-            homeView.render();
+            this.initializeView(HomeView, null, true);
         });
-
-        var navbar = new NavbarView();
-        navbar.render();
 
         Backbone.history.start();
     };

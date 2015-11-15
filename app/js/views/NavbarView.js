@@ -10,6 +10,7 @@ define([
 
         initialize: function() {
             _.bindAll(this, 'search');
+            this.render();
         },
 
         events: {
@@ -17,13 +18,14 @@ define([
         },
 
         render: function() {
-            this.$el.html(this.template());
+            var user = localStorage.getItem('user');
+            this.$el.html(this.template(JSON.parse(user)));
             return this;
         },
 
         search: function(event) {
             var value = document.getElementById("search-input-field").value;
-            $.get("https://umovie.herokuapp.com/unsecure/search/actors?" + "q=" + value).done(function(data) {
+            $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
                 if(data.resultCount == 0) {
                     return;
                 }

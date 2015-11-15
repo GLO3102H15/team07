@@ -8,6 +8,10 @@ define([
     var HomeView = Backbone.View.extend({
         el: $("#page"),
 
+        initialize: function() {
+            this.render();
+        },
+
         render: function(){
             this.$el.html(homeTemplate);
         }

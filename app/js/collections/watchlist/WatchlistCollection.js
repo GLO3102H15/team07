@@ -5,7 +5,7 @@ define([
 ], function(_, Backbone, WatchlistModel) {
 
     var WatchlistCollection = Backbone.Collection.extend({
-        url: 'https://umovie.herokuapp.com/unsecure/watchlists',
+        url: 'https://umovie.herokuapp.com/watchlists',
 
         model: WatchlistModel,
 

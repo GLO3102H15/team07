@@ -3,7 +3,7 @@ define([
 ], function(Backbone) {
     var FilmographyModel = Backbone.Model.extend({
         urlRoot: function () {
-            return 'https://umovie.herokuapp.com/unsecure/actors/' + this.attributes.artistId + "/movies";
+            return 'https://umovie.herokuapp.com/actors/' + this.attributes.artistId + "/movies";
         },
         defaults: {
             artistId: 0,

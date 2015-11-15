@@ -5,7 +5,7 @@ define([
 ], function (_, Backbone, TvShowCollection) {
 
     var TvShowModel = Backbone.Model.extend({
-        urlRoot: 'https://umovie.herokuapp.com/unsecure/tvshows/season/',
+        urlRoot: 'https://umovie.herokuapp.com/tvshows/season/',
         parse: function (data) {
             var resultatTvShow = data.results[0];
             resultatTvShow['id'] = data.collectionId;
