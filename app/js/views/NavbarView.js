@@ -10,16 +10,18 @@ define([
 
         initialize: function() {
             _.bindAll(this, 'search');
-            this.render();
         },
 
         events: {
             'change #search-container' : 'search'
         },
 
-        render: function() {
-            var user = localStorage.getItem('user');
-            this.$el.html(this.template(JSON.parse(user)));
+        render: function(auth) {
+            this.$el.empty();
+            if(auth){
+                var user = localStorage.getItem('user');
+                this.$el.html(this.template(JSON.parse(user)));
+            }
             return this;
         },
 

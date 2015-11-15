@@ -49,6 +49,7 @@ define([
 
     var initialize = function(){
         var app_router = new AppRouter;
+        app_router.navbar = new NavbarView();
 
         app_router.initializeView = function (View, model, requiresAuth) {
             if(this.currentView) {
@@ -60,12 +61,7 @@ define([
                 model = null;
             }
 
-            if(user && !this.navbar) {
-                this.navbar = new NavbarView();
-            } else if (!user && this.navbar){
-                this.navbar.destroyView();
-                this.navbar = null;
-            }
+            this.navbar.render(user);
             this.currentView = new View(model);
         };
 

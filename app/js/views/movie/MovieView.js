@@ -22,12 +22,7 @@ define([
             var movieViewScope = this;
             this.model = model;
 
-            var owner = {
-                "email": "team07@gmail.com",
-                "name": "team07",
-                "following": [],
-                "id": "5634d66a0986b8030010f59a"
-            };
+            var owner = JSON.parse(localStorage.getItem('user'));
             this.watchlists = new WatchlistCollection(owner);
 
             var renderView = _.after(2, function () {
