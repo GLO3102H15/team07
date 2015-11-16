@@ -14,9 +14,10 @@ define([
     'views/NavbarView',
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
-    'views/login/LoginView'
+    'views/login/LoginView',
+    'views/login/SignupView'
 ], function($, _, Backbone, HomeView, ActorView, ActorModel,WatchlistsView, WatchlistView, WatchlistCollection,
-            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, LoginView) {
+            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, LoginView, SignupView) {
 
 
     Backbone.View.prototype.destroyView = function() {
@@ -40,6 +41,7 @@ define([
             'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
             'login': 'showLogin',
+            'signup': 'showSignup',
             'logout': 'logout',
 
             // Default
@@ -93,6 +95,10 @@ define([
 
         app_router.on('route:showLogin', function(){
             this.initializeView(LoginView, null, false);
+        });
+
+        app_router.on('route:showSignup', function(){
+            this.initializeView(SignupView, null, false);
         });
 
         app_router.on('route:logout', function(){

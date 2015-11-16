@@ -1,7 +1,16 @@
-<form method="post" id="loginForm">
-    <label>Email</label>
-    <input type="text" class="form-control" name="email">
-    <label>Password</label>
-    <input type="password" class="form-control" name="password">
-    <button type="submit" class="btn btn-warning btn-lg">Sign in</button>
-</form>
+<div class="container">
+    <h1>Login</h1>
+    <div class="alert alert-danger" role="alert" style="display:none;"></div>
+    <form method="post" id="loginForm">
+        <div class="form-group">
+        <label for="email-input">Email</label>
+        <input id="email-input" type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+        <div class="form-group">
+        <label for="password-input">Password</label>
+        <input id="password-input" type="password" class="form-control" name="password">
+            </div>
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </form>
+    <a href="#signup"><button class="btn btn-default">Register here</button></a>
+</div>

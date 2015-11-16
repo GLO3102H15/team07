@@ -22,11 +22,15 @@ define([
         },
 
         onLogin: function(e){
+            var view = this;
             var data = $(e.target).serialize();
             $.post("https://umovie.herokuapp.com/login", data, function(result){
                 localStorage.setItem('user', JSON.stringify(result));
                 location.assign("./");
-            });
+            })
+                .fail(function() {
+                    $('.alert').html('Login failed.').fadeIn().delay(2000).fadeOut();
+                });
             return false;
         }
     });
