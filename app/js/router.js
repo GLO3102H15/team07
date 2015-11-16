@@ -2,33 +2,36 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'views/NavbarView',
     'views/home/HomeView',
     'views/actor/ActorView',
-    'models/actor/ActorModel',
-    'views/watchlist/WatchlistsView',
-    'views/watchlist/WatchlistView',
-    'collections/watchlist/WatchlistCollection',
-    'models/watchlist/WatchlistModel',
+    'views/login/LoginView',
+    'views/login/SignupView',
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
-    'views/NavbarView',
+    'views/user/UserView',
+    'views/watchlist/WatchlistsView',
+    'views/watchlist/WatchlistView',
+    'models/actor/ActorModel',
+    'models/watchlist/WatchlistModel',
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
-    'views/login/LoginView',
-    'views/login/SignupView'
-], function($, _, Backbone, HomeView, ActorView, ActorModel,WatchlistsView, WatchlistView, WatchlistCollection,
-            WatchlistModel, TvShowView, MovieView, NavbarView, MovieModel, TvShowModel, LoginView, SignupView) {
+    'models/user/UserModel',
+    'collections/watchlist/WatchlistCollection'
+], function ($, _, Backbone, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
+             UserView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             UserModel, WatchlistCollection) {
 
 
-    Backbone.View.prototype.destroyView = function() {
+    Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
         this.$el.empty();
         delete this;
     };
 
-    $(document).ajaxSend(function(e, xhr, options) {
+    $(document).ajaxSend(function (e, xhr, options) {
         var user = localStorage.getItem('user');
-        if(user){
+        if (user) {
             xhr.setRequestHeader("Authorization", JSON.parse(user).token);
         }
     });
@@ -40,6 +43,7 @@ define([
             'tv-show/:tvShowId': 'showTvShow',
             'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
+            'users/:userId': 'showUser',
             'login': 'showLogin',
             'signup': 'showSignup',
             'logout': 'logout',
@@ -49,16 +53,16 @@ define([
         }
     });
 
-    var initialize = function(){
+    var initialize = function () {
         var app_router = new AppRouter;
         app_router.navbar = new NavbarView();
 
         app_router.initializeView = function (View, model, requiresAuth) {
-            if(this.currentView) {
+            if (this.currentView) {
                 this.currentView.destroyView();
             }
             var user = localStorage.getItem('user');
-            if(requiresAuth && !user) {
+            if (requiresAuth && !user) {
                 View = LoginView;
                 model = null;
             }
@@ -67,7 +71,7 @@ define([
             this.currentView = new View(model);
         };
 
-        app_router.on('route:showMovie', function(movieId){
+        app_router.on('route:showMovie', function (movieId) {
             var movie = new MovieModel({id: movieId});
             this.initializeView(MovieView, movie, true);
         });
@@ -82,26 +86,31 @@ define([
             this.initializeView(TvShowView, tvShow, true);
         });
 
-        app_router.on('route:showWatchLists', function(){
+        app_router.on('route:showWatchLists', function () {
             var user = JSON.parse(localStorage.getItem('user'));
             var collection = new WatchlistCollection(user);
             this.initializeView(WatchlistsView, collection, true);
         });
 
-        app_router.on('route:showWatchList', function(watchlistId){
+        app_router.on('route:showWatchList', function (watchlistId) {
             var model = new WatchlistModel({id: watchlistId});
             this.initializeView(WatchlistView, model, true);
         });
 
-        app_router.on('route:showLogin', function(){
+        app_router.on('route:showUser', function (userId) {
+            var model = new UserModel({id: userId});
+            this.initializeView(UserView, model, true);
+        });
+
+        app_router.on('route:showLogin', function () {
             this.initializeView(LoginView, null, false);
         });
 
-        app_router.on('route:showSignup', function(){
+        app_router.on('route:showSignup', function () {
             this.initializeView(SignupView, null, false);
         });
 
-        app_router.on('route:logout', function(){
+        app_router.on('route:logout', function () {
             localStorage.removeItem('user');
             this.initializeView(LoginView, null, false);
         });
