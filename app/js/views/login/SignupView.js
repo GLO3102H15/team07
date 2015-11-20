@@ -25,7 +25,7 @@ define([
             var data = $(e.target).serialize();
             $.post("https://umovie.herokuapp.com/signup", data, function(){
                 $.post("https://umovie.herokuapp.com/login", data, function(result) {
-                    localStorage.setItem('user', JSON.stringify(result));
+                    $.cookie('user', result);
                     location.assign("./");
                 });
             });

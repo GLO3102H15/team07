@@ -19,8 +19,8 @@ define([
         render: function(auth) {
             this.$el.empty();
             if(auth){
-                var user = localStorage.getItem('user');
-                this.$el.html(this.template(JSON.parse(user)));
+                var user = $.cookie('user');
+                this.$el.html(this.template(user));
             }
             return this;
         },

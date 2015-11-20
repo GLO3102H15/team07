@@ -2,6 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'jqueryCookie',
     'views/NavbarView',
     'views/home/HomeView',
     'views/actor/ActorView',
@@ -18,10 +19,9 @@ define([
     'models/tvshow/TvShowModel',
     'models/user/UserModel',
     'collections/watchlist/WatchlistCollection'
-], function ($, _, Backbone, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
+], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
              UserView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
              UserModel, WatchlistCollection) {
-
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
@@ -30,9 +30,9 @@ define([
     };
 
     $(document).ajaxSend(function (e, xhr, options) {
-        var user = localStorage.getItem('user');
+        var user = $.cookie('user');
         if (user) {
-            xhr.setRequestHeader("Authorization", JSON.parse(user).token);
+            xhr.setRequestHeader("Authorization", user.token);
         }
     });
 
@@ -54,6 +54,7 @@ define([
     });
 
     var initialize = function () {
+        $.cookie.json = true;
         var app_router = new AppRouter;
         app_router.navbar = new NavbarView();
 
@@ -61,7 +62,7 @@ define([
             if (this.currentView) {
                 this.currentView.destroyView();
             }
-            var user = localStorage.getItem('user');
+            var user = $.cookie('user');
             if (requiresAuth && !user) {
                 View = LoginView;
                 model = null;
@@ -87,7 +88,7 @@ define([
         });
 
         app_router.on('route:showWatchLists', function () {
-            var user = JSON.parse(localStorage.getItem('user'));
+            var user = $.cookie('user');
             var collection = new WatchlistCollection(user);
             this.initializeView(WatchlistsView, collection, true);
         });
@@ -111,7 +112,7 @@ define([
         });
 
         app_router.on('route:logout', function () {
-            localStorage.removeItem('user');
+            $.removeCookie('user');
             this.initializeView(LoginView, null, false);
         });
 

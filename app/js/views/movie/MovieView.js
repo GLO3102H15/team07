@@ -22,7 +22,7 @@ define([
             var movieViewScope = this;
             this.model = model;
 
-            var owner = JSON.parse(localStorage.getItem('user'));
+            var owner = $.cookie('user');
             this.watchlists = new WatchlistCollection(owner);
 
             var renderView = _.after(2, function () {
