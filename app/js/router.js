@@ -11,17 +11,19 @@ define([
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
     'views/user/UserView',
-    'views/watchlist/WatchlistsView',
+    'views/search/SearchView',
+    'views/search/ResultView',
     'views/watchlist/WatchlistView',
     'models/actor/ActorModel',
     'models/watchlist/WatchlistModel',
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
     'models/user/UserModel',
+    'models/search/SearchModel',
     'collections/watchlist/WatchlistCollection'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
-             UserView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
-             UserModel, WatchlistCollection) {
+             UserView,SearchView, ResultView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             UserModel,SearchModel, WatchlistCollection) {
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
@@ -74,6 +76,9 @@ define([
 
         app_router.on('route:showMovie', function (movieId) {
             var movie = new MovieModel({id: movieId});
+            console.log("HALLELAFMLASFKNa");
+            var searchView = new SearchView();
+            searchView.getResults();
             this.initializeView(MovieView, movie, true);
         });
 
