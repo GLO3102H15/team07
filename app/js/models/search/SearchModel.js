@@ -4,8 +4,7 @@ define([
 ], function(_, Backbone) {
         var SearchModel = Backbone.Model.extend({
 
-            performSearch: function() {
-                var value = "pratt";
+            performSearch: function(value) {
                 $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
                     if(data.resultCount == 0) {
                         return;

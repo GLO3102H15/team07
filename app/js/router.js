@@ -76,9 +76,6 @@ define([
 
         app_router.on('route:showMovie', function (movieId) {
             var movie = new MovieModel({id: movieId});
-            console.log("HALLELAFMLASFKNa");
-            var searchView = new SearchView();
-            searchView.getResults();
             this.initializeView(MovieView, movie, true);
         });
 

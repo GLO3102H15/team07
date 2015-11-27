@@ -7,17 +7,14 @@ define([
     var SearchFormView = Backbone.View.extend({
         tagName: "form",
         id: "flight-options",
-        events: {
-            "click input": "getResults"
-        },
 
         initialize: function () {
             var self = this;
             this.model = new SearchModel();
         },
 
-        getResults: function() {
-            this.model.performSearch();
+        getResults: function(value) {
+            this.model.performSearch(value);
         }
     });
 

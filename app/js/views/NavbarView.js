@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'views/search/SearchView',
     'text!templates/navbar.html'
-], function($, _, Backbone, navbar_template) {
+], function($, _, Backbone, SearchView, navbar_template) {
     var NavbarView = Backbone.View.extend({
         el: $("#navbar"),
         template: _.template(navbar_template),
@@ -27,17 +28,8 @@ define([
 
         search: function(event) {
             var value = document.getElementById("search-input-field").value;
-            $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
-                if(data.resultCount == 0) {
-                    return;
-                }
-
-                window.location.hash = 'actors/' + data.results[0].artistId.toString();
-                document.getElementById("search-input-field").value = '';
-                document.getElementById("search-input-field").blur();
-            }).fail(function() {
-                console.log("failed");
-            });
+            var searchView = new SearchView();
+            searchView.getResults(value);
         },
 
         home: function(event) {
