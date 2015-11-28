@@ -14,16 +14,22 @@ define([
 
         displayMoviesResults: function(model) {
             $("#home-navbar").click();
-            console.log(model.toJSON());
             var template = _.template(moviesResult);
-            $("#movies-search").html(template(model.toJSON()));
+            $("#movies-search").html(template(model.toJSON())).hide().slideDown("slow");
+            $(".toggle-search1").click(function() {
+                $("#actors-search").slideUp("slow");
+                $("#movies-search").slideUp("slow");
+            })
         },
 
         displayActorsResults: function(model) {
             $("#home-navbar").click();
-            console.log(model.toJSON());
             var template = _.template(actorsResult);
-            $("#actors-search").html(template(model.toJSON()));
+            $("#actors-search").html(template(model.toJSON())).hide().slideDown("slow");
+            $(".toggle-search2").click(function() {
+                $("#actors-search").slideUp("slow");
+                $("#movies-search").slideUp("slow");
+            })
         },
 
         getResults: function(value) {

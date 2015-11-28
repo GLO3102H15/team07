@@ -17,31 +17,11 @@
     </thead>
     <tbody>
     <% _.each(moviesResult, function(movie) { %>
-    <tr data-toggle="collapse" data-target="#<%= movie.trackId %>-toggle" class="accordion-toggle">
+    <tr class="accordion-toggle">
         <td><%= movie.releaseDate.substring(0,4) %></td>
         <td><img src="<%= movie.artworkUrl60 %>"></td>
         <td><%= movie.trackName %></td>
-        <td><a class="btn btn-lg btn-primary" href="#movies/<%= movie.trackId %>" role="button">Go to page</a></td>
-    </tr>
-    <tr >
-        <td colspan="6" class="hiddenRow">
-            <div class="accordian-body collapse" id="<%= movie.trackId %>-toggle">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-1">
-                            <img src="<%= movie.artworkUrl100 %>">
-                        </div>
-                        <h2 class="movie-title"><a href="#movies/<%= movie.trackId %>"><%= movie.trackName %></a>
-                            <small class="text-muted"><%= movie.releaseDate.substring(0,10) %></small>
-                        </h2>
-                        <small><%= movie.contentAdvisoryRating %>
-                            <%= movie.primaryGenreName %>
-                        </small>
-                        <p class="lead"><%= movie.longDescription %></p>
-                    </div>
-                </div>
-            </div>
-        </td>
+        <td><a class="btn btn-lg btn-primary toggle-search1" href="#movies/<%= movie.trackId %>" role="button">Go to page</a></td>
     </tr>
     <% }); %>
     </tbody>
