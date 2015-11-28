@@ -8,11 +8,6 @@ define([
         tagName: "form",
         id: "flight-options",
 
-        initialize: function () {
-            var self = this;
-            this.model = new SearchModel();
-        },
-
         getResults: function(value) {
             this.model.performSearch(value);
         }
