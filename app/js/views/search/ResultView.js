@@ -13,7 +13,10 @@ define([
         },
         displayResults: function(model, results) {
             $("#home-navbar").click();
-            this.$el.html(this.template(results[0]));
+            console.log(results);
+            console.log("modele");
+            console.log(model.toJSON());
+            this.$el.html(this.template(model.toJSON()));
         }
     });
 
