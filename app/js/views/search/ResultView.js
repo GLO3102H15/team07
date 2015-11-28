@@ -2,21 +2,32 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/search/resultTemplate.html'
-], function($, _, Backbone, resultTemplate) {
+    'text!templates/search/actorsResultTemplate.html',
+    'text!templates/search/moviesResultTemplate.html'
+], function($, _, Backbone, actorsResult, moviesResult) {
     var ResultView = Backbone.View.extend({
-        el: $("#page"),
-        template: _.template(resultTemplate),
 
         initialize: function() {
-            this.model.on("change:searchResults", this.displayResults, this);
+            this.model.on("change:actorsResult", this.displayActorsResults, this);
+            this.model.on("change:moviesResult", this.displayMoviesResults, this);
         },
-        displayResults: function(model, results) {
+
+        displayMoviesResults: function(model) {
             $("#home-navbar").click();
-            console.log(results);
-            console.log("modele");
             console.log(model.toJSON());
-            this.$el.html(this.template(model.toJSON()));
+            var template = _.template(moviesResult);
+            $("#movies-search").html(template(model.toJSON()));
+        },
+
+        displayActorsResults: function(model) {
+            $("#home-navbar").click();
+            console.log(model.toJSON());
+            var template = _.template(actorsResult);
+            $("#actors-search").html(template(model.toJSON()));
+        },
+
+        getResults: function(value) {
+            this.model.performSearch(value);
         }
     });
 

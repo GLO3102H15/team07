@@ -2,11 +2,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/search/SearchView',
     'views/search/ResultView',
     'models/search/SearchModel',
     'text!templates/navbar.html'
-], function($, _, Backbone, SearchView, ResultView, SearchModel, navbar_template) {
+], function($, _, Backbone, ResultView, SearchModel, navbar_template) {
     var NavbarView = Backbone.View.extend({
         el: $("#navbar"),
         template: _.template(navbar_template),
@@ -31,10 +30,9 @@ define([
         search: function(event) {
             var value = document.getElementById("search-input-field").value;
             var searchModel = new SearchModel();
-            var searchView = new SearchView({ model: searchModel });
             var resultView = new ResultView({ model: searchModel });
 
-            searchView.getResults(value);
+            resultView.getResults(value);
         },
 
         home: function(event) {

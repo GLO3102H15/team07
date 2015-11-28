@@ -19,7 +19,7 @@ define([
     'models/user/UserModel',
     'collections/watchlist/WatchlistCollection'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
-             UserView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             UserView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
              UserModel,SearchModel, WatchlistCollection) {
 
     Backbone.View.prototype.destroyView = function () {
