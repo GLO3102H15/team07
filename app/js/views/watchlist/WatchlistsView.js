@@ -27,6 +27,7 @@ define([
         },
 
         render: function(){
+            $("#validation-alert").hide();
             if (this.watchlists.length) {
                 this.$('#watchlist-thumbnails').show();
             } else {
@@ -45,12 +46,27 @@ define([
 
         addWatchlist: function () {
             var watchlistName = this.input.val();
-            if (!watchlistName) { return; }
-            var user = this.watchlists.user;
-            this.watchlists.create({
-                name: watchlistName,
-                owner: user,
-            }, {wait: true});
+            var watchlistWithSameName = this.watchlists.findWhere({name: watchlistName});
+            if (!watchlistName ) {
+                this.showMessageError("A watchlist must have a name!");
+            }
+            else if (watchlistWithSameName) {
+                this.showMessageError("This name is already taken. Please choose another!");
+            }
+            else {
+                var user = this.watchlists.user;
+                this.watchlists.create({
+                    name: watchlistName,
+                    owner: user
+                }, {wait: true});
+            }
+        },
+
+        showMessageError: function (message) {
+            $("#validation-alert").text(message).removeClass('hide');
+            $("#validation-alert").fadeTo(2000, 500).slideUp(500, function(){
+                $("#validation-alert").addClass('hide');
+            });
         }
     });
 
