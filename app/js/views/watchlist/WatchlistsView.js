@@ -27,7 +27,6 @@ define([
         },
 
         render: function(){
-            $("#validation-alert").hide();
             if (this.watchlists.length) {
                 this.$('#watchlist-thumbnails').show();
             } else {
