@@ -62,9 +62,9 @@ define([
         },
 
         showMessageError: function (message) {
-            $("#validation-alert").text(message).removeClass('hide');
-            $("#validation-alert").fadeTo(2000, 500).slideUp(500, function(){
-                $("#validation-alert").addClass('hide');
+            $("#validation-alert").text(message).removeClass('hide')
+                .fadeTo(3000, 500).slideUp(500, function(){
+                $(this).addClass('hide');
             });
         }
     });
