@@ -11,6 +11,7 @@ define([
                         return;
                     }
                     self.set({"actorsResult" :data.results});
+                    $("#no-search-result").html('');
                 }).fail(function() {
                     console.log("failed");
                 });
@@ -20,6 +21,7 @@ define([
                         return;
                     }
                     self.set({"moviesResult" :data.results});
+                    $("#no-search-result").html('');
                 }).fail(function() {
                     console.log("failed");
                 });
@@ -29,6 +31,7 @@ define([
                         return;
                     }
                     self.set({"tvshowsResult" :data.results});
+                    $("#no-search-result").html('');
                 }).fail(function() {
                     console.log("failed");
                 });

@@ -15,7 +15,8 @@ define([
         },
 
         displayMoviesResults: function(model) {
-            $("#page-search-movies").html('<div class="container" id="movies-search" style = "background-color: white"></div>');
+            $("#page-search-movies").html(
+                '<div class="container" id="movies-search" style = "background-color: white"></div>');
 
             var template = _.template(moviesResult);
             $("#movies-search").html(template(model.toJSON())).hide().slideDown("slow");
@@ -27,7 +28,8 @@ define([
         },
 
         displayTvShowsResults: function(model) {
-            $("#page-search-tvshows").html('<div class="container" id="tvshows-search" style = "background-color: white"></div>');
+            $("#page-search-tvshows").html(
+                '<div class="container" id="tvshows-search" style = "background-color: white"></div>');
 
             var template = _.template(tvshowsResult);
             $("#tvshows-search").html(template(model.toJSON())).hide().slideDown("slow");
@@ -39,7 +41,8 @@ define([
         },
 
         displayActorsResults: function(model) {
-            $("#page-search-actors").html('<div class="container" id="actors-search" style = "margin-top: 20px; background-color: white"></div>');
+            $("#page-search-actors").html(
+                '<div class="container" id="actors-search" style = "margin-top: 20px; background-color: white"></div>');
 
             var template = _.template(actorsResult);
             $("#actors-search").html(template(model.toJSON())).hide().slideDown("slow");
@@ -51,7 +54,12 @@ define([
         },
 
         getResults: function(value) {
-            $("#page").html('<div id="page-search-actors"></div><div id="pase-search-movies"></div><div id="page-search-tvshows"></div>');
+            $("#page").html(
+                '<div id="page-search-actors"></div>' +
+                '<div id="pase-search-movies"></div>' +
+                '<div id="page-search-tvshows"></div>' +
+                '<div id="no-search-result">' +
+                '<h1 style="text-align: center">No result found!</h1></div>');
             this.model.performSearch(value);
         }
     });
