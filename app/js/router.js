@@ -19,8 +19,8 @@ define([
     'models/user/UserModel',
     'collections/watchlist/WatchlistCollection'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
-             UserView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
-             UserModel,SearchModel, WatchlistCollection) {
+             UserView, WatchlistsView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             UserModel, WatchlistCollection) {
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
