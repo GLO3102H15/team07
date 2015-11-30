@@ -12,10 +12,10 @@ define([
             return response;
         },
 
-        isFollowing: function (userID) {
-            if(this.get("id") === userID) {return -1;}
+        isFollowing: function (email) {
+            if(this.get("email") === email) {return -1;}
             return _.some(this.get('following'), function(user){
-                user._id === userID;
+                return user.email === email;
             });
         },
 
@@ -30,7 +30,10 @@ define([
         },
 
         unfollow: function (userID) {
-            $.delete("https://umovie.herokuapp.com/follow/" + userID);
+            $.ajax({
+                url: "https://umovie.herokuapp.com/follow/" + userID,
+                type: "DELETE"
+            });
         }
     });
 

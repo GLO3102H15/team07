@@ -10,7 +10,8 @@ define([
     'views/login/SignupView',
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
-    'views/user/UserView',
+    'views/user/ProfileView',
+    'views/user/FriendsView',
     'views/watchlist/WatchlistsView',
     'views/watchlist/WatchlistView',
     'models/actor/ActorModel',
@@ -20,7 +21,7 @@ define([
     'models/user/UserModel',
     'collections/watchlist/WatchlistCollection'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
-             UserView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             ProfileView, FriendsView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
              UserModel, WatchlistCollection) {
 
     Backbone.View.prototype.destroyView = function () {
@@ -44,6 +45,7 @@ define([
             'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
             'users/:userId': 'showUser',
+            'users/:userId/friends': 'showUserFriends',
             'login': 'showLogin',
             'signup': 'showSignup',
             'logout': 'logout',
@@ -100,7 +102,12 @@ define([
 
         app_router.on('route:showUser', function (userId) {
             var model = new UserModel({id: userId});
-            this.initializeView(UserView, model, true);
+            this.initializeView(ProfileView, model, true);
+        });
+
+        app_router.on('route:showUserFriends', function (userId) {
+            var model = new UserModel({id: userId});
+            this.initializeView(FriendsView, model, true);
         });
 
         app_router.on('route:showLogin', function () {
