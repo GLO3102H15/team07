@@ -15,7 +15,8 @@ define([
         },
 
         displayMoviesResults: function(model) {
-            $("#home-navbar").click();
+            $("#page-search-movies").html('<div class="container" id="movies-search" style = "background-color: white"></div>');
+
             var template = _.template(moviesResult);
             $("#movies-search").html(template(model.toJSON())).hide().slideDown("slow");
             $(".toggle-search1").click(function() {
@@ -26,7 +27,8 @@ define([
         },
 
         displayTvShowsResults: function(model) {
-            $("#home-navbar").click();
+            $("#page-search-tvshows").html('<div class="container" id="tvshows-search" style = "background-color: white"></div>');
+
             var template = _.template(tvshowsResult);
             $("#tvshows-search").html(template(model.toJSON())).hide().slideDown("slow");
             $(".toggle-search1").click(function() {
@@ -37,7 +39,8 @@ define([
         },
 
         displayActorsResults: function(model) {
-            $("#home-navbar").click();
+            $("#page-search-actors").html('<div class="container" id="actors-search" style = "margin-top: 20px; background-color: white"></div>');
+
             var template = _.template(actorsResult);
             $("#actors-search").html(template(model.toJSON())).hide().slideDown("slow");
             $(".toggle-search2").click(function() {
@@ -48,6 +51,7 @@ define([
         },
 
         getResults: function(value) {
+            $("#page").html('<div id="page-search-actors"></div><div id="pase-search-movies"></div><div id="page-search-tvshows"></div>');
             this.model.performSearch(value);
         }
     });
