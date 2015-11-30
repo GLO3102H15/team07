@@ -28,11 +28,7 @@ define([
         },
 
         search: function(event) {
-            var value = document.getElementById("search-input-field").value;
-            var searchModel = new SearchModel();
-            var resultView = new ResultView({ model: searchModel });
-
-            resultView.getResults(value);
+            window.location.hash = encodeURI("#search/" + document.getElementById("search-input-field").value);
         },
 
         home: function(event) {

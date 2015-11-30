@@ -60,6 +60,7 @@ define([
                 '<div id="page-search-tvshows"></div>' +
                 '<div id="no-search-result">' +
                 '<h1 style="text-align: center">No result found!</h1></div>');
+            $('.navbar-toggle').click();
             this.model.performSearch(value);
         }
     });
