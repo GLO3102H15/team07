@@ -24,6 +24,15 @@ define([
                     console.log("failed");
                 });
 
+                $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
+                    if(data.resultCount == 0) {
+                        return;
+                    }
+                    self.set({"tvshowsResult" :data.results});
+                }).fail(function() {
+                    console.log("failed");
+                });
+
             }
         })
     return SearchModel;

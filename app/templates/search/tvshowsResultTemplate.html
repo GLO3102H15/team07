@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+    <h2> Tv Shows </h2>
+    <tr>
+        <th>Year</th>
+        <th>Cover</th>
+        <th>Title  (Click to expand)</th>
+        <th>Go to page</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(tvshowsResult, function(tvshow) { %>
+    <tr class="accordion-toggle">
+        <td><%= tvshow.releaseDate.substring(0,4) %></td>
+        <td><img src="<%= tvshow.artworkUrl60 %>"></td>
+        <td><%= tvshow.collectionName %></td>
+        <td><a class="btn btn-lg btn-primary toggle-search1" href="#tv-show/<%= tvshow.collectionId %>" role="button">Go to page</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+</body>
+</html>
