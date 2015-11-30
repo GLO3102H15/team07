@@ -2,10 +2,8 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/search/ResultView',
-    'models/search/SearchModel',
     'text!templates/navbar.html'
-], function($, _, Backbone, ResultView, SearchModel, navbar_template) {
+], function($, _, Backbone, navbar_template) {
     var NavbarView = Backbone.View.extend({
         el: $("#navbar"),
         template: _.template(navbar_template),
