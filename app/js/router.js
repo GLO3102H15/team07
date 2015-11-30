@@ -11,7 +11,7 @@ define([
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
     'views/user/UserView',
-    'views/watchlist/WatchlistView',
+    'views/watchlist/WatchlistsView',
     'models/actor/ActorModel',
     'models/watchlist/WatchlistModel',
     'models/movie/MovieModel',
