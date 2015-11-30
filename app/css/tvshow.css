@@ -57,3 +57,6 @@
     max-height:30px;
     max-width: 30px;
 }
+.row.featurette .tv-title {
+    margin-bottom: 0;
+}
