@@ -2,32 +2,18 @@
     <% _.each(tvShows, function(episode) { %>
     <li >
         <div class="episode">
-            <a data-toggle="modal" data-target="#<%= episode.trackId %>" href="#">
-                <img src="<%= episode.artworkUrl100 %>">
+            <a id="something"  href="#">
+                <img src="<%= episode.artworkUrl100 %>" id="<%= episode.position %>">
             </a>
 
             <div class="episode-title"><%= episode.trackName %></div>
         </div>
     </li>
-    <!-- Modal -->
-    <div class="modal fade" id="<%= episode.trackId %>" role="dialog">
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h2 class="tv-title"><%= episode.collectionName %></h2>
-                    <div class="episode-title"><%= episode.trackName %></div>
-                    <img src="<%= episode.artworkUrl100 %>">
-                    <div class="duration"><%= episode.duration %></div>
-                    <p class="lead"><%= episode.longDescription %></p>
-                    <div id="video-preview"></div>
-                </div>
-            </div>
 
-        </div>
-    </div>
+</div>
+
 <% }); %>
-
-
 </ul>
+
+
