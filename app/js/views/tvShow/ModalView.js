@@ -12,7 +12,6 @@ define([
         initialize: function (collectionId, episodeId) {
             this.model = new EpisodeModel({collectionId: collectionId});
             this.model.set("collectionId", collectionId);
-
             var self = this;
             this.model.fetch({
 
@@ -25,8 +24,10 @@ define([
         },
 
         render: function(episodeId) {
-            $("#modal").html(this.template(this.modal.attributes.results[episodeId]));
-            //this.videoPreview = new YoutubeView(this.model.get('trackName'));
+            var info = this.modal.attributes.results[episodeId];
+
+            $("#episode-info").html(this.template(info));
+            //this.videoPreview = new YoutubeView(info.collectionName + " episode " + info.trackNumber);
             return this;
         }
     });

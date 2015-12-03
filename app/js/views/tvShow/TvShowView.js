@@ -40,7 +40,6 @@ define([
         },
 
         modal: function(e){
-            e.preventDefault();
             var episodeId = $(e.target).attr('id');
             this.mView = new ModalView(this.id, episodeId);
         }

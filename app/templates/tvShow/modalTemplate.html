@@ -1,9 +1,12 @@
 <!-- Modal -->
-<div class="modal fade" role="dialog">
+<div id="<%= trackId %>" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
         <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"  data-dismiss="modal">&times;</button>
+            </div>
             <div class="modal-body">
                 <h2 class="tv-title"><%= collectionName %></h2>
                 <div class="episode-title"><%= trackName %></div>

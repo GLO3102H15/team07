@@ -15,6 +15,7 @@ define(['underscore',
                 var minutes = Math.floor(seconds / 60);
                 var seconds = seconds - (minutes * 60);
                 resultatsEpisode.results[i].duration= minutes + 'm' + seconds+ 's';
+                resultatsEpisode.results[i].position = i;
             }
             return resultatsEpisode;
         }
