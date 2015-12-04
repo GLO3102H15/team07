@@ -17,7 +17,6 @@ define([
         },
 
         displayMoviesResults: function(model) {
-            console.log(model.toJSON());
             $("#page-search-movies").html(
                 '<div class="container" id="movies-search" style = "background-color: white"></div>');
             var template = _.template(moviesResult);
