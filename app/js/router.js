@@ -42,12 +42,10 @@ define([
             'movies/:movieId': 'showMovie',
             'actors/:actorId': 'showActor',
             'tv-show/:tvShowId': 'showTvShow',
-
-            // Pass in user
-            'watchlists/:user': 'showWatchLists',
-            'watchlists/:user/:watchlistId': 'showWatchList',
+            'watchlists/:watchlistId': 'showWatchList',
             'users/:userId': 'showUser',
             'users/:userId/friends': 'showUserFriends',
+            'users/:usedId/watchlists': 'showWatchLists',
             'login': 'showLogin',
             'signup': 'showSignup',
             'logout': 'logout',
@@ -91,8 +89,8 @@ define([
             this.initializeView(TvShowView, tvShow, true);
         });
 
-        app_router.on('route:showWatchLists', function (user) {
-            var collection = new WatchlistCollection(user);
+        app_router.on('route:showWatchLists', function (userId) {
+            var collection = new WatchlistCollection(new UserModel({id: userId}));
             this.initializeView(WatchlistsView, collection, true);
         });
 
