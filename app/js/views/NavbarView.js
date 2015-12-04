@@ -26,18 +26,7 @@ define([
         },
 
         search: function(event) {
-            var value = document.getElementById("search-input-field").value;
-            $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
-                if(data.resultCount == 0) {
-                    return;
-                }
-
-                window.location.hash = 'actors/' + data.results[0].artistId.toString();
-                document.getElementById("search-input-field").value = '';
-                document.getElementById("search-input-field").blur();
-            }).fail(function() {
-                console.log("failed");
-            });
+            window.location.hash = encodeURI("#search/" + document.getElementById("search-input-field").value);
         },
 
         home: function(event) {

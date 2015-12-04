@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+    <h2> Artists </h2>
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Primary Genre</th>
+        <th>Go to page</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (typeof(actorsResult[0]) == "undefined") { %>
+    <tr class="accordion-toggle">
+        <td>NO ACTORS WERE FOUND</td>
+    </tr>
+    <% } %>
+    <% _.each(actorsResult, function(actor) { %>
+    <tr class="accordion-toggle">
+        <td><%= actor.artistName %></td>
+        <td><%= actor.artistType %></td>
+        <td><%= actor.primaryGenreName %></td>
+        <td><a class="btn btn-lg btn-primary toggle-search" href="#actors/<%= actor.artistId %>" role="button">Go to page</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+</body>
+</html>

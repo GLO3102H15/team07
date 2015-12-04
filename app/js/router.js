@@ -19,10 +19,12 @@ define([
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
     'models/user/UserModel',
-    'collections/watchlist/WatchlistCollection'
+    'collections/watchlist/WatchlistCollection',
+    'views/search/ResultView',
+    'models/search/SearchModel'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
              ProfileView, FriendsView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
-             UserModel, WatchlistCollection) {
+             UserModel, WatchlistCollection, ResultView, SearchModel) {
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
@@ -43,6 +45,7 @@ define([
             'actors/:actorId': 'showActor',
             'tv-show/:tvShowId': 'showTvShow',
             'watchlists/:watchlistId': 'showWatchList',
+            'search/:data': 'search',
             'users/:userId': 'showUser',
             'users/:userId/friends': 'showUserFriends',
             'users/:usedId/watchlists': 'showWatchLists',
@@ -120,6 +123,12 @@ define([
         app_router.on('route:logout', function () {
             $.removeCookie('user');
             this.initializeView(LoginView, null, false);
+        });
+
+        app_router.on('route:search', function(data) {
+            var searchModel = new SearchModel();
+            var resultView = new ResultView({ model: searchModel });
+            resultView.getResults(data);
         });
 
         app_router.on('route:defaultAction', function (actions) {

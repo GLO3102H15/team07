@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+    <h2> Movies </h2>
+    <tr>
+        <th>Year</th>
+        <th>Cover</th>
+        <th>Title  (Click to expand)</th>
+        <th>Go to page</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (typeof(moviesResult[0]) == "undefined") { %>
+    <tr class="accordion-toggle">
+        <td>NO MOVIES WERE FOUND</td>
+    </tr>
+    <% } %>
+    <% _.each(moviesResult, function(movie) { %>
+    <tr class="accordion-toggle">
+        <td><%= movie.releaseDate.substring(0,4) %></td>
+        <td><img src="<%= movie.artworkUrl60 %>"></td>
+        <td><%= movie.trackName %></td>
+        <td><a class="btn btn-lg btn-primary toggle-search1" href="#movies/<%= movie.trackId %>" role="button">Go to page</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+</body>
+</html>
