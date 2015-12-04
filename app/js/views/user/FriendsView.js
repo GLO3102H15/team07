@@ -14,9 +14,9 @@ define([
 
         initialize: function (model) {
             var friendsViewScope = this;
-            this.model = model;
             this.user = new UserModel($.cookie("user"));
-            this.user.fetch({
+            this.model = model;
+            this.model.fetch({
                 success: function () {
                     friendsViewScope.render()
                 }
@@ -25,8 +25,8 @@ define([
 
         render: function () {
             var friendsViewScope = this;
-            this.$el.html(this.template({userName: this.user.get("name")}));
-            var friends = this.user.get("following");
+            this.$el.html(this.template({userName: this.model.get("name")}));
+            var friends = this.model.get("following");
             for (var i = 0; i < friends.length; i++) {
                 var friendModel = new UserModel(friends[i]);
                 friendModel.fetch({
