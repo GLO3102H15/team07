@@ -27,10 +27,18 @@ define([
         },
 
         render: function(){
+            this.$('#watchlist-title h1 strong').text(this.watchlists.user + "'s Watchlists");
             if (this.watchlists.length) {
                 this.$('#watchlist-thumbnails').show();
+                this.$('#empty-watchlist').hide();
             } else {
                 this.$('#watchlist-thumbnails').hide();
+                this.$('#empty-watchlist').show();
+            }
+            if($.cookie('user').name === this.watchlists.user) {
+                this.$('#new-watchlist').show();
+            } else {
+                this.$('#new-watchlist').hide();
             }
         },
 
@@ -44,6 +52,7 @@ define([
         },
 
         addWatchlist: function () {
+            debugger;
             var watchlistName = this.input.val();
             var watchlistWithSameName = this.watchlists.findWhere({name: watchlistName});
             if (!watchlistName ) {
