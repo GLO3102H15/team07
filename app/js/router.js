@@ -10,17 +10,21 @@ define([
     'views/login/SignupView',
     'views/tvShow/TvShowView',
     'views/movie/MovieView',
-    'views/user/UserView',
+    'views/user/ProfileView',
+    'views/user/FriendsView',
+    'views/watchlist/WatchlistsView',
     'views/watchlist/WatchlistView',
     'models/actor/ActorModel',
     'models/watchlist/WatchlistModel',
     'models/movie/MovieModel',
     'models/tvshow/TvShowModel',
     'models/user/UserModel',
-    'collections/watchlist/WatchlistCollection'
+    'collections/watchlist/WatchlistCollection',
+    'views/search/ResultView',
+    'models/search/SearchModel'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
-             UserView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
-             UserModel,SearchModel, WatchlistCollection) {
+             ProfileView, FriendsView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
+             UserModel, WatchlistCollection, ResultView, SearchModel) {
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
@@ -40,9 +44,11 @@ define([
             'movies/:movieId': 'showMovie',
             'actors/:actorId': 'showActor',
             'tv-show/:tvShowId': 'showTvShow',
-            'watchlists': 'showWatchLists',
             'watchlists/:watchlistId': 'showWatchList',
+            'search/:data': 'search',
             'users/:userId': 'showUser',
+            'users/:userId/friends': 'showUserFriends',
+            'users/:usedId/watchlists': 'showWatchLists',
             'login': 'showLogin',
             'signup': 'showSignup',
             'logout': 'logout',
@@ -86,9 +92,8 @@ define([
             this.initializeView(TvShowView, tvShow, true);
         });
 
-        app_router.on('route:showWatchLists', function () {
-            var user = $.cookie('user');
-            var collection = new WatchlistCollection(user);
+        app_router.on('route:showWatchLists', function (userId) {
+            var collection = new WatchlistCollection(new UserModel({id: userId}));
             this.initializeView(WatchlistsView, collection, true);
         });
 
@@ -99,7 +104,12 @@ define([
 
         app_router.on('route:showUser', function (userId) {
             var model = new UserModel({id: userId});
-            this.initializeView(UserView, model, true);
+            this.initializeView(ProfileView, model, true);
+        });
+
+        app_router.on('route:showUserFriends', function (userId) {
+            var model = new UserModel({id: userId});
+            this.initializeView(FriendsView, model, true);
         });
 
         app_router.on('route:showLogin', function () {
@@ -113,6 +123,12 @@ define([
         app_router.on('route:logout', function () {
             $.removeCookie('user');
             this.initializeView(LoginView, null, false);
+        });
+
+        app_router.on('route:search', function(data) {
+            var searchModel = new SearchModel();
+            var resultView = new ResultView({ model: searchModel });
+            resultView.getResults(data);
         });
 
         app_router.on('route:defaultAction', function (actions) {

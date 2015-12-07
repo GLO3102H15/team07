@@ -16,12 +16,17 @@
     </tr>
     </thead>
     <tbody>
+    <% if (typeof(tvshowsResult[0]) == "undefined") { %>
+    <tr class="accordion-toggle">
+        <td>NO TV SHOWS WERE FOUND</td>
+    </tr>
+    <% } %>
     <% _.each(tvshowsResult, function(tvshow) { %>
     <tr class="accordion-toggle">
         <td><%= tvshow.releaseDate.substring(0,4) %></td>
         <td><img src="<%= tvshow.artworkUrl60 %>"></td>
         <td><%= tvshow.collectionName %></td>
-        <td><a class="btn btn-lg btn-primary toggle-search1" href="#tv-show/<%= tvshow.collectionId %>" role="button">Go to page</a></td>
+        <td><a class="btn btn-lg btn-primary toggle-search2" href="#tv-show/<%= tvshow.collectionId %>" role="button">Go to page</a></td>
     </tr>
     <% }); %>
     </tbody>

@@ -34,6 +34,9 @@ define([
 
         addAll: function() {
             _.each(this.watchlist.get('movies').models, this.addOne);
+            if ($.cookie('user').name !== this.watchlist.get("owner").name) {
+                $(".close").hide();
+            }
         }
     });
 

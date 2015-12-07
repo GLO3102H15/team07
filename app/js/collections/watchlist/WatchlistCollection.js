@@ -17,7 +17,7 @@ define([
             var watchlistCollectionScope = this;
             var userWatchlists = _.filter(response, function (watchlist) {
                 if (_.has(watchlist.owner, "email")) {
-                    return watchlist.owner.email === watchlistCollectionScope.user.email;
+                    return watchlist.owner.email === watchlistCollectionScope.user.get("email");
                 } else {
                     return false;
                 }

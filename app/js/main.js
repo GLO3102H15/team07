@@ -6,6 +6,7 @@ require.config({
         jqueryCookie: 'vendor/jquery.cookie/jquery.cookie',
         text: 'vendor/text/text',
         bootstrap: 'vendor/bootstrap/dist/js/bootstrap.min',
+        md5: 'vendor/blueimp-md5/js/md5.min',
         templates: '../templates'
     },
 

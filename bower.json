@@ -8,6 +8,7 @@
     "text": "2.0.14",
     "requirejs": "2.1.2",
     "bootstrap": "3.3.5",
-    "jquery.cookie": "1.4.1"
+    "jquery.cookie": "1.4.1",
+    "blueimp-md5" : "1.1.1"
   }
 }

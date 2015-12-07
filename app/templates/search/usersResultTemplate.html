@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table class="table table-condensed" style="border-collapse:collapse;">
+    <thead>
+    <h2> Users </h2>
+    <tr>
+        <th>Name</th>
+        <th>email</th>
+        <th>Follow</th>
+        <th>Profile</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (typeof(usersResult[0]) == "undefined") { %>
+    <tr class="accordion-toggle">
+        <td>NO USERS WERE FOUND</td>
+    </tr>
+    <% } %>
+    <% _.each(usersResult, function(user) { %>
+    <tr class="accordion-toggle">
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><a class="btn btn-lg btn-primary follow-button toggle-search3" id="<%= user.id %>" href="#" role="button">Follow</a></td>
+        <td><a class="btn btn-lg btn-primary toggle-search3" href="#users/<%= user.id %>" role="button">Profile page</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+</body>
+</html>

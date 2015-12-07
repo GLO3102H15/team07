@@ -3,11 +3,12 @@ define([
     'underscore',
     'backbone',
     'models/movie/MovieModel',
+    'models/user/UserModel',
     'collections/watchlist/WatchlistCollection',
     'models/watchlist/WatchlistModel',
     'views/YoutubeView',
     'text!templates/movie/movieTemplate.html'
-], function ($, _, Backbone, MovieModel, WatchlistCollection, WatchlistModel, YoutubeView, movieTemplate) {
+], function ($, _, Backbone, MovieModel, UserModel, WatchlistCollection, WatchlistModel, YoutubeView, movieTemplate) {
 
     var MovieView = Backbone.View.extend({
         el: $("#page"),
@@ -22,7 +23,7 @@ define([
             var movieViewScope = this;
             this.model = model;
 
-            var owner = $.cookie('user');
+            var owner = new UserModel($.cookie('user'));
             this.watchlists = new WatchlistCollection(owner);
 
             var renderView = _.after(2, function () {

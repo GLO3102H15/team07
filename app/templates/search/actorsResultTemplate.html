@@ -16,12 +16,17 @@
     </tr>
     </thead>
     <tbody>
+    <% if (typeof(actorsResult[0]) == "undefined") { %>
+    <tr class="accordion-toggle">
+        <td>NO ACTORS WERE FOUND</td>
+    </tr>
+    <% } %>
     <% _.each(actorsResult, function(actor) { %>
     <tr class="accordion-toggle">
         <td><%= actor.artistName %></td>
         <td><%= actor.artistType %></td>
         <td><%= actor.primaryGenreName %></td>
-        <td><a class="btn btn-lg btn-primary toggle-search2" href="#actors/<%= actor.artistId %>" role="button">Go to page</a></td>
+        <td><a class="btn btn-lg btn-primary toggle-search" href="#actors/<%= actor.artistId %>" role="button">Go to page</a></td>
     </tr>
     <% }); %>
     </tbody>

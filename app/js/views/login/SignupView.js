@@ -2,8 +2,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'lib/gravatar/gravatar',
     'text!templates/login/signupTemplate.html'
-], function($, _, Backbone, SignupTemplate) {
+], function($, _, Backbone, Gravatar, SignupTemplate) {
     var LoginView = Backbone.View.extend({
         el: $("#page"),
         template: _.template(SignupTemplate),
@@ -25,6 +26,7 @@ define([
             var data = $(e.target).serialize();
             $.post("https://umovie.herokuapp.com/signup", data, function(){
                 $.post("https://umovie.herokuapp.com/login", data, function(result) {
+                    result.avatar = Gravatar.generate(result.email);
                     $.cookie('user', result);
                     location.assign("./");
                 });
