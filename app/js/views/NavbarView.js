@@ -28,17 +28,18 @@ define([
 
         search: function(event) {
             $(function () {
+
                 var getData = function (request, response) {
-                        $.getJSON(
-                        "https://umovie.herokuapp.com/search/tvshows/seasons?q=" + request.term,
-                        function (data1) {
-                            $.getJSON(
-                                "https://umovie.herokuapp.com/search/movies?q=" + request.term,
-                                function (data2) {
-                                    var data = [data1.results[0].collectionName, data2.results[0].trackName];
-                                    response(data);
-                                })
-                        })
+                    $.getJSON(
+                        "https://umovie.herokuapp.com/search?q=" + request.term,
+                        function (data) {
+                            var suggestion =[""];
+                            for(var i=0;i<5;i++){
+                                if ("trackName" in data.results[i]){suggestion.push(data.results[i].trackName);}
+                                else{suggestion.push(data.results[i].collectionName);}
+                            }
+                            response(suggestion);
+                        });
                 };
 
                 var selectItem = function (event, ui) {
