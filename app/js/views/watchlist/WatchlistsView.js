@@ -52,7 +52,7 @@ define([
                 this.$('#empty-watchlist').hide();
             } else {
                 this.$('#watchlist-thumbnails').hide();
-                this.$('#empty-watchlist').show();
+                this.$('#empty-watchlist').show().text("There are no watchlists!");
             }
         },
 

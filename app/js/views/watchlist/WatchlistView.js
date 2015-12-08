@@ -13,16 +13,23 @@ define([
         template: _.template(watchlistTemplate),
 
         initialize: function (model) {
+            var watchlistScope = this;
             this.watchlist = model;
             this.listenTo(this.watchlist, 'change', this.addAll);
             this.$el.html(this.template());
-            this.watchlist.fetch();
+            this.watchlist.fetch({
+                success: function () {
+                    watchlistScope.render();
+                }
+            });
         },
 
         render: function(){
             if (this.watchlist.get('movies').models.length) {
                 this.$('#watchlist-thumbnails').show();
+                this.$('#empty-watchlist').hide();
             } else {
+                this.$('#empty-watchlist').show().text("There are no movies!");
                 this.$('#watchlist-thumbnails').hide();
             }
         },
