@@ -15,15 +15,21 @@ define([
             this.model.fetch({
                 success: function (modal) {
                     self.modal = modal;
-                    self.render(episodeNumber);
+                    self.show(episodeNumber);
                 }
             });
         },
 
-        render: function(episodeNumber) {
+        show: function(episodeNumber) {
             var info = this.modal.attributes.results[episodeNumber];
             $("#episode-info").html(this.template(info));
             //this.videoPreview = new YoutubeView(info.collectionName + " episode " + info.trackNumber);
+        },
+
+        render: function(){
+           temp =$("#episode-info").html()+$("#video-preview").html();
+            this.$el.html(temp);
+            return this;
         }
     });
 

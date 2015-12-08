@@ -12,6 +12,16 @@
 .tv-info {
     padding-top: 20px;
 }
+
+.tv-rating {
+    max-height:30px;
+    max-width: 30px;
+}
+
+.row.featurette .tv-title {
+    margin-bottom: 0;
+}
+
 .row.tv-info  img {
     width:100%;
 }
@@ -19,6 +29,11 @@
 .row .tv-preview {
     padding-top:20px;
     position: relative;
+}
+
+.row.button {
+    text-align: center;
+    margin-top: 60px;
 }
 
 .episode-list  li {
@@ -49,14 +64,11 @@
     color:darkgrey;
 }
 
-.row.button {
-    text-align: center;
-    margin-top: 60px;
+.show-title{
+    padding-left: 10px;
 }
-.tv-rating {
-    max-height:30px;
-    max-width: 30px;
+
+#episode-info {
+    display: none;
 }
-.row.featurette .tv-title {
-    margin-bottom: 0;
-}
+

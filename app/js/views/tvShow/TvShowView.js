@@ -7,8 +7,9 @@ define([
     'views/tvShow/EpisodeView',
     'views/tvShow/ModalView',
     'text!templates/tvShow/tvShowTemplate.html',
-    'collections/tvshow/TvShowCollection'
-], function($, _, Backbone, tvModel, YoutubeView, EpisodeView, ModalView, tvShowTemplate, TvShowCollection){
+    'collections/tvshow/TvShowCollection',
+    'lib/bootstrapModal/BootstrapModal'
+], function($, _, Backbone, tvModel, YoutubeView, EpisodeView, ModalView, tvShowTemplate, TvShowCollection,BootstrapModal){
 
     var TvShowView = Backbone.View.extend({
         el: $("#page"),
@@ -41,10 +42,14 @@ define([
 
         modalWindow: function(e){
             e.preventDefault();
-            var episodeId = $(e.target).attr('id');
-
-            this.mView = new ModalView(this.id, episodeId);
-
+            var episodeNumber = $(e.target).attr('id');
+            var view= new ModalView(this.id, episodeNumber);
+            setTimeout(function() {
+                var modal = new Backbone.BootstrapModal({
+                    showFooter: false,
+                    content:view,
+                }).open();
+            }, 1000);
         }
     });
 
