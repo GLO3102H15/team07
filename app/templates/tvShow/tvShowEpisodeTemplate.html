@@ -2,8 +2,11 @@
     <% _.each(tvShows, function(episode) { %>
     <li >
         <div class="episode">
-            <a id="something"  data-toggle="modal" data-target="#<%= episode.trackId %>" href="#">
-                <img src="<%= episode.artworkUrl100 %>" id="<%= episode.position %>">
+            <a id="something"  href="#<%= episode.trackId %>" >
+                <div id="<%= episode.trackId %>">
+                    <img src="<%= episode.artworkUrl100 %>" id="<%= episode.position %>">
+                </div>
+
             </a>
 
             <div class="episode-title"><%= episode.trackName %></div>

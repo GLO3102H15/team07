@@ -9,26 +9,21 @@ define([
     var ModalView = Backbone.View.extend({
         template: _.template(ModalTemplate),
 
-        initialize: function (collectionId, episodeId) {
+        initialize: function (collectionId, episodeNumber) {
             this.model = new EpisodeModel({collectionId: collectionId});
-            this.model.set("collectionId", collectionId);
             var self = this;
             this.model.fetch({
-
                 success: function (modal) {
                     self.modal = modal;
-                    self.render(episodeId);
+                    self.render(episodeNumber);
                 }
             });
-            return this;
         },
 
-        render: function(episodeId) {
-            var info = this.modal.attributes.results[episodeId];
-
+        render: function(episodeNumber) {
+            var info = this.modal.attributes.results[episodeNumber];
             $("#episode-info").html(this.template(info));
             //this.videoPreview = new YoutubeView(info.collectionName + " episode " + info.trackNumber);
-            return this;
         }
     });
 

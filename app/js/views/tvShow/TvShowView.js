@@ -14,7 +14,7 @@ define([
         el: $("#page"),
 
         events: {
-            "click #something" : "modal"
+            "click #something" : "modalWindow"
         },
 
 
@@ -39,9 +39,12 @@ define([
             this.videoPreview = new YoutubeView(this.tvShowModel.get('collectionName'));
         },
 
-        modal: function(e){
+        modalWindow: function(e){
+            e.preventDefault();
             var episodeId = $(e.target).attr('id');
+
             this.mView = new ModalView(this.id, episodeId);
+
         }
     });
 
