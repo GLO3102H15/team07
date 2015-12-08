@@ -22,6 +22,11 @@ define([
             result['date'] = new Date(result.releaseDate);
             result['poster'] = result.artworkUrl100.replace('100x100', '800x800');
             result['thumbnail'] = result.artworkUrl100.replace('100x100', '400x300');
+
+            if(!result['contentAdvisoryRating']) {
+                result['contentAdvisoryRating'] = "G";
+            }
+
             return result;
         },
 

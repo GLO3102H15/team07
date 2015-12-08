@@ -26,6 +26,7 @@ define([
         },
 
         render: function(){
+            if(!this.model.attributes.primaryGenreName) { this.model.attributes.primaryGenreName = ""; }
             this.$el.html(this.template(this.model.toJSON()));
 
             this.filmographyView = new FilmographyView(this.artistId);
