@@ -2,18 +2,51 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'models/search/SearchModel',
     'text!templates/search/actorsResultTemplate.html',
     'text!templates/search/moviesResultTemplate.html',
     'text!templates/search/tvshowsResultTemplate.html',
     'text!templates/search/usersResultTemplate.html'
-], function($, _, Backbone, actorsResult, moviesResult,tvshowsResult, usersResult) {
+], function($, _, Backbone, SearchModel, actorsResult, moviesResult, tvshowsResult, usersResult) {
     var ResultView = Backbone.View.extend({
 
         initialize: function() {
-            this.model.on("change:actorsResult", this.displayActorsResults, this);
-            this.model.on("change:moviesResult", this.displayMoviesResults, this);
-            this.model.on("change:tvshowsResult", this.displayTvShowsResults, this);
-            this.model.on("change:usersResult", this.displayUsersResults, this);
+            this.actors = new SearchModel({fetchCallback: function(actors, value) {
+                $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
+                    actors.set({"results": data.results});
+                }).fail(function() {
+                    console.log("failed");
+                });
+            }});
+
+            this.movies = new SearchModel({fetchCallback: function(movies, value) {
+                $.get("https://umovie.herokuapp.com/search/movies?" + "q=" + value).done(function(data) {
+                    movies.set({"results": data.results});
+                }).fail(function() {
+                    console.log("failed");
+                });
+            }});
+
+            this.tvShows = new SearchModel({fetchCallback: function(tvShows, value) {
+                $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
+                    tvShows.set({"results": data.results});
+                }).fail(function() {
+                    console.log("failed");
+                });
+            }});
+
+            this.users = new SearchModel({fetchCallback: function(users, value) {
+                $.get("https://umovie.herokuapp.com/search/users?" + "q=" + value).done(function(data) {
+                    users.set({"results": data});
+                }).fail(function() {
+                    console.log("failed");
+                });
+            }});
+
+            this.actors.on("change:results", this.displayActorsResults, this.actors);
+            this.movies.on("change:results", this.displayMoviesResults, this.movies);
+            this.tvShows.on("change:results", this.displayTvShowsResults, this.tvShows);
+            this.users.on("change:results", this.displayUsersResults, this.users);
         },
 
         displayMoviesResults: function(model) {
@@ -77,6 +110,13 @@ define([
             })
         },
 
+        searchAll: function(value) {
+            this.actors.performSearch(value);
+            this.movies.performSearch(value);
+            this.tvShows.performSearch(value);
+            this.users.performSearch(value);
+        },
+
         getResults: function(value) {
             $("#page").html(
                 '<div id="page-search-actors"></div>' +
@@ -84,7 +124,8 @@ define([
                 '<div id="page-search-tvshows"></div>' +
                 '<div id="page-search-users"></div>');
             $('.navbar-toggle').click();
-            this.model.performSearch(value);
+
+            this.searchAll(value);
         }
     });
 

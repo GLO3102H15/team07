@@ -16,12 +16,12 @@
     </tr>
     </thead>
     <tbody>
-    <% if (typeof(moviesResult[0]) == "undefined") { %>
+    <% if (typeof(results[0]) == "undefined") { %>
     <tr class="accordion-toggle">
         <td>NO MOVIES WERE FOUND</td>
     </tr>
     <% } %>
-    <% _.each(moviesResult, function(movie) { %>
+    <% _.each(results, function(movie) { %>
     <tr class="accordion-toggle">
         <td><%= movie.releaseDate.substring(0,4) %></td>
         <td><img src="<%= movie.artworkUrl60 %>"></td>

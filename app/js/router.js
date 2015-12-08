@@ -20,11 +20,10 @@ define([
     'models/tvshow/TvShowModel',
     'models/user/UserModel',
     'collections/watchlist/WatchlistCollection',
-    'views/search/ResultView',
-    'models/search/SearchModel'
+    'views/search/ResultView'
 ], function ($, _, Backbone, JqueryCookie, NavbarView, HomeView, ActorView, LoginView, SignupView, TvShowView, MovieView,
              ProfileView, FriendsView, WatchlistsView, WatchlistView, ActorModel, WatchlistModel, MovieModel, TvShowModel,
-             UserModel, WatchlistCollection, ResultView, SearchModel) {
+             UserModel, WatchlistCollection, ResultView) {
 
     Backbone.View.prototype.destroyView = function () {
         this.undelegateEvents();
@@ -126,8 +125,7 @@ define([
         });
 
         app_router.on('route:search', function(data) {
-            var searchModel = new SearchModel();
-            var resultView = new ResultView({ model: searchModel });
+            var resultView = new ResultView();
             resultView.getResults(data);
         });
 
