@@ -13,8 +13,13 @@ define(['underscore',
             for(i=0;i < resultatsEpisode.results.length;i++){
                 var seconds = Math.floor(resultatsEpisode.results[i].trackTimeMillis / 1000);
                 var minutes = Math.floor(seconds / 60);
-                var seconds = seconds - (minutes * 60);
-                resultatsEpisode.results[i].duration= minutes + 'm' + seconds+ 's';
+                var hours = Math.floor(minutes / 60);
+                minutes = minutes - (hours * 60);
+                if(hours < 1){
+                    resultatsEpisode.results[i].duration= minutes + ' min';
+                }else{
+                    resultatsEpisode.results[i].duration= hours+ ' hr '+ minutes + ' min';
+                }
                 resultatsEpisode.results[i].position = i;
             }
             return resultatsEpisode;

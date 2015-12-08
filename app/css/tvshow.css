@@ -64,11 +64,36 @@
     color:darkgrey;
 }
 
-.show-title{
-    padding-left: 10px;
-}
-
 #episode-info {
     display: none;
 }
+
+.modal h2{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.modal .episode-title{
+    margin-left: 10px;
+    margin-bottom: -20px;
+    float: left;
+}
+
+.modal .duration{
+    text-align: right;
+}
+
+.modal img{
+    margin-top: 7px;
+    margin-bottom:20px;
+}
+
+.modal .description{
+    font-size: 18px;
+    margin-left: -20px;
+    margin-bottom:20px;
+}
+
+
+
 
