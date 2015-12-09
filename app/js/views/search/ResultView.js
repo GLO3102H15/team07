@@ -6,40 +6,33 @@ define([
     'text!templates/search/actorsResultTemplate.html',
     'text!templates/search/moviesResultTemplate.html',
     'text!templates/search/tvshowsResultTemplate.html',
-    'text!templates/search/usersResultTemplate.html'
-], function($, _, Backbone, SearchModel, actorsResult, moviesResult, tvshowsResult, usersResult) {
+    'text!templates/search/usersResultTemplate.html',
+    'text!templates/search/filteredMovies.html'
+], function($, _, Backbone, SearchModel, actorsResult, moviesResult, tvshowsResult, usersResult, filteredMovies) {
     var ResultView = Backbone.View.extend({
 
         initialize: function() {
             this.actors = new SearchModel({fetchCallback: function(actors, value) {
                 $.get("https://umovie.herokuapp.com/search/actors?" + "q=" + value).done(function(data) {
-                    actors.set({"results": data.results});
-                }).fail(function() {
-                    console.log("failed");
+                    actors.updateResults(data.results);
                 });
             }});
 
             this.movies = new SearchModel({fetchCallback: function(movies, value) {
                 $.get("https://umovie.herokuapp.com/search/movies?" + "q=" + value).done(function(data) {
-                    movies.set({"results": data.results});
-                }).fail(function() {
-                    console.log("failed");
+                    movies.updateResults(data.results);
                 });
             }});
 
             this.tvShows = new SearchModel({fetchCallback: function(tvShows, value) {
                 $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
-                    tvShows.set({"results": data.results});
-                }).fail(function() {
-                    console.log("failed");
+                    tvShows.updateResults(data.results);
                 });
             }});
 
             this.users = new SearchModel({fetchCallback: function(users, value) {
                 $.get("https://umovie.herokuapp.com/search/users?" + "q=" + value).done(function(data) {
-                    users.set({"results": data});
-                }).fail(function() {
-                    console.log("failed");
+                    users.updateResults(data);
                 });
             }});
 
@@ -47,6 +40,8 @@ define([
             this.movies.on("change:results", this.displayMoviesResults, this.movies);
             this.tvShows.on("change:results", this.displayTvShowsResults, this.tvShows);
             this.users.on("change:results", this.displayUsersResults, this.users);
+
+            this.movies.on("change:currentGenre", this.filterMovieResults, this.movies);
         },
 
         displayMoviesResults: function(model) {
@@ -59,7 +54,22 @@ define([
                 $("#movies-search").slideUp("slow");
                 $("#tvshows-search").slideUp("slow");
                 $("#users-search").slideUp("slow");
-            })
+            });
+
+            model.forEachGenre(function(genre){
+                $("#movie-filter-by-genre-radio").append(function() {
+                    return $('<label class="btn btn-primary">' + genre + '</label>').click(
+                        function() {
+                            model.filterByGenre(genre);
+                        }
+                    );
+                });
+            });
+        },
+
+        filterMovieResults: function(model) {
+            var template = _.template(filteredMovies);
+            $("#filtered-movie-results").html(template(model.toJSON()));
         },
 
         displayTvShowsResults: function(model) {
@@ -72,7 +82,7 @@ define([
                 $("#movies-search").slideUp("slow");
                 $("#tvshows-search").slideUp("slow");
                 $("#users-search").slideUp("slow");
-            })
+            });
         },
 
         displayActorsResults: function(model) {
@@ -85,7 +95,7 @@ define([
                 $("#movies-search").slideUp("slow");
                 $("#tvshows-search").slideUp("slow");
                 $("#users-search").slideUp("slow");
-            })
+            });
         },
 
         displayUsersResults: function(model) {
@@ -107,7 +117,7 @@ define([
                     data: JSON.stringify(data),
                     contentType: 'application/json'
                 });
-            })
+            });
         },
 
         searchAll: function(value) {
