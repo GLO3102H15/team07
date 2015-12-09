@@ -8,11 +8,6 @@ define([
 ], function ($, _, Backbone, UserModel, WatchlistCollection, UserTemplate) {
 
     var UserView = Backbone.View.extend({
-        events: {
-            "click .btn-follow": "follow",
-            "click .btn-unfollow": "unfollow"
-        },
-
         template: _.template(UserTemplate),
 
         initialize: function (model, user, el) {
@@ -34,22 +29,39 @@ define([
         },
 
         render: function () {
+            var that = this;
             this.el.empty();
             var values = this.model.attributes;
             values["watchlists"] = this.watchlists.models;
             values["isFollowing"] = this.user.isFollowing(this.model.get("email"));
             this.el.html(this.template(values));
+            $("#" + this.el[0].id + " .btn-follow").on("click", function() {
+                that.follow(this.value)
+            });
+            $("#" + this.el[0].id + " .btn-unfollow").on("click", function() {
+                that.unfollow(this.value)
+            });
+
         },
 
-        follow: function () {
-            this.user.follow(this.model.get("id"));
-            this.render();
+        follow: function (id) {
+            var userViewScope = this;
+            this.user.follow(id);
+            this.user.fetch({
+                success: function () {
+                    userViewScope.render();
+                }
+            });
         },
 
-        unfollow: function () {
-            this.user.unfollow(this.model.get("id"));
-            this.render();
-
+        unfollow: function (id) {
+            var userViewScope = this;
+            this.user.unfollow(id);
+            this.user.fetch({
+                success: function () {
+                    userViewScope.render();
+                }
+            });
         }
     });
 

@@ -32,7 +32,7 @@ define([
                 friendModel.fetch({
                     success: function (model) {
                         $("#container").append("<div id='friend-panel-" + model.get("id") +  "' class='row'></div>");
-                        var view = new UserView(model, friendsViewScope.user, $('#profile-panel'));
+                        var view = new UserView(model, friendsViewScope.user, $('#friend-panel-' + model.get("id")));
                     }
                 });
             }

@@ -26,11 +26,11 @@
                 <% } else if (isFollowing == 1) { %>
                     <h2><strong>Following</strong></h2>
                     <p><small>this user</small></p>
-                    <button class="btn btn-danger btn-block btn-unfollow"><span class="fa fa-minus-circle"></span> Unfollow </button>
+                    <button class="btn btn-danger btn-block btn-unfollow" value="<%=id%>"><span class="fa fa-minus-circle"></span> Unfollow </button>
                 <% } else { %>
-                    <h2><strong>Not following</strong></h2>
-                    <p><small>this user</small></p>
-                    <button class="btn btn-success btn-block btn-follow"><span class="fa fa-plus-circle"></span> Follow </button>
+                    <h2><strong>Not</strong></h2>
+                    <p><small>Following this user</small></p>
+                    <button class="btn btn-success btn-block btn-follow" value="<%=id%>"><span class="fa fa-plus-circle"></span> Follow </button>
                 <% } %>
             </div>
             <div class="col-xs-12 col-sm-4 emphasis">
