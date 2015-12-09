@@ -2,6 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'lib/jquery-ui/jquery-ui.min',
     'models/tvshow/TvShowModel',
     'views/YoutubeView',
     'views/tvShow/EpisodeView',
@@ -9,15 +10,15 @@ define([
     'text!templates/tvShow/tvShowTemplate.html',
     'collections/tvshow/TvShowCollection',
     'lib/bootstrapModal/BootstrapModal'
-], function($, _, Backbone, tvModel, YoutubeView, EpisodeView, ModalView, tvShowTemplate, TvShowCollection,BootstrapModal){
+], function($, _, Backbone, ui, tvModel, YoutubeView, EpisodeView, ModalView, tvShowTemplate, TvShowCollection,BootstrapModal){
 
     var TvShowView = Backbone.View.extend({
         el: $("#page"),
 
         events: {
-            "click #something" : "modalWindow"
+            "click #episode" : "modalWindow",
+            'input #episode-search-container' : 'search'
         },
-
 
         template: _.template(tvShowTemplate),
         initialize: function (tvmodel) {
@@ -42,14 +43,49 @@ define([
 
         modalWindow: function(e){
             e.preventDefault();
-            var episodeNumber = $(e.target).attr('id');
+            var episodeNumber = $(e.target).parent().parent().attr('id');
+
             var view= new ModalView(this.id, episodeNumber);
             setTimeout(function() {
                 var modal = new Backbone.BootstrapModal({
                     showFooter: false,
-                    content:view,
+                    content:view
                 }).open();
             }, 1000);
+        },
+
+        search: function(event) {
+            var getData = function (request, response) {
+                var list =[];
+                $("div.episode-title").each(function() {
+                    console.log($(this).html().search(request.term));
+                    if($(this).html().toLowerCase().search(request.term.toLowerCase()) >= 0){
+                        episode = { label: $(this).html(), value: $(this).parent().parent().attr('id')};
+                        list.push(episode);
+                    }
+                });
+                response(list)
+            };
+
+            var selectItem = function (event, ui) {
+                $("#episode-search-input-field").val(ui.item.label);
+                var episodeNumber = ui.item.value;
+                var collId= window.location.href.replace(/.*\//, '');
+                var view= new ModalView(collId, episodeNumber);
+                setTimeout(function() {
+                    var modal = new Backbone.BootstrapModal({
+                        showFooter: false,
+                        content:view
+                    }).open();
+                }, 1000);
+                return false;
+            };
+
+            $("#episode-search-input-field").autocomplete({
+                source: getData,
+                select: selectItem,
+                minLength: 2
+            });
         }
     });
 

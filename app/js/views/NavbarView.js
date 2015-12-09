@@ -27,35 +27,33 @@ define([
         },
 
         search: function(event) {
-            $(function () {
+            var getData = function (request, response) {
+                $.getJSON(
+                    "https://umovie.herokuapp.com/search?q=" + request.term,
+                    function (data) {
+                        var suggestion =[""];
+                        for(var i=0;i<5;i++){
+                            if ("trackName" in data.results[i]){suggestion.push(data.results[i].trackName);}
+                            else{suggestion.push(data.results[i].collectionName);}
+                        }
+                        response(suggestion);
+                    });
+            };
 
-                var getData = function (request, response) {
-                    $.getJSON(
-                        "https://umovie.herokuapp.com/search?q=" + request.term,
-                        function (data) {
-                            var suggestion =[""];
-                            for(var i=0;i<5;i++){
-                                if ("trackName" in data.results[i]){suggestion.push(data.results[i].trackName);}
-                                else{suggestion.push(data.results[i].collectionName);}
-                            }
-                            response(suggestion);
-                        });
-                };
+            var selectItem = function (event, ui) {
+                $("#search-input-field").val(ui.item.value);
+                return false;
+            };
 
-                var selectItem = function (event, ui) {
-                    $("#search-input-field").val(ui.item.value);
-                    return false;
-                };
-
-                $("#search-input-field").autocomplete({
-                    source: getData,
-                    select: selectItem,
-                    minLength: 2,
-                    change: function() {
-                        window.location.hash = encodeURI("#search/" + document.getElementById("search-input-field").value);
-                    }
-                });
+            $("#search-input-field").autocomplete({
+                source: getData,
+                select: selectItem,
+                minLength: 2,
+                change: function() {
+                    window.location.hash = encodeURI("#search/" + document.getElementById("search-input-field").value);
+                }
             });
+
 
         },
 

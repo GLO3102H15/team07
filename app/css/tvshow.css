@@ -73,7 +73,9 @@
     margin-bottom: 0px;
 }
 
-.modal .episode-title{
+.modal-episode-title{
+    font-weight: bold;
+    color:black;
     margin-left: 10px;
     margin-bottom: -20px;
     float: left;
