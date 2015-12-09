@@ -18,11 +18,14 @@ define([
                 });
             }});
 
-            this.movies = new SearchModel({fetchCallback: function(movies, value) {
-                $.get("https://umovie.herokuapp.com/search/movies?" + "q=" + value).done(function(data) {
-                    movies.updateResults(data.results);
-                });
-            }});
+            this.movies = new SearchModel({
+                fetchCallback: function(movies, value) {
+                    $.get("https://umovie.herokuapp.com/search/movies?" + "q=" + value).done(function(data) {
+                        movies.updateResults(data.results);
+                    });
+                },
+                filterAttribute: 'primaryGenreName'
+            });
 
             this.tvShows = new SearchModel({fetchCallback: function(tvShows, value) {
                 $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
@@ -41,7 +44,7 @@ define([
             this.tvShows.on("change:results", this.displayTvShowsResults, this.tvShows);
             this.users.on("change:results", this.displayUsersResults, this.users);
 
-            this.movies.on("change:currentGenre", this.filterMovieResults, this.movies);
+            this.movies.on("change:filteredResults", this.filterMovieResults, this.movies);
         },
 
         displayMoviesResults: function(model) {
@@ -56,13 +59,38 @@ define([
                 $("#users-search").slideUp("slow");
             });
 
-            model.forEachGenre(function(genre){
-                $("#movie-filter-by-genre-radio").append(function() {
-                    return $('<label class="btn btn-primary">' + genre + '</label>').click(
-                        function() {
-                            model.filterByGenre(genre);
+            var allButton = $('<label class="btn btn-primary">all</label>').click(
+                function() {
+                    allButton.prop('filterButtons').forEach(function(button) {
+                        console.log(button.prop('checked'));
+                        button.prop('checked', false);
+                        button.removeClass("active");
+                    });
+                    model.resetFilters();
+                }
+            );
+            allButton.prop('filterButtons', []);
+            $("#filter-movie-buttons").append(function() {
+                return allButton;
+            });
+            model.forEachAvailableFilter(function(filter){
+                $("#filter-movie-buttons").append(function() {
+                    var button = $('<label class="btn btn-primary"><input type="checkbox">' + filter + '</label>');
+
+                    button.prop('checked', false);
+
+                    button.click(function() {
+                        if(button.prop('checked')) {
+                            button.prop('checked', false);
+                            model.removeFilter(filter);
+                        } else {
+                            button.prop('checked', true);
+                            model.addFilter(filter);
                         }
-                    );
+                    });
+
+                    allButton.prop('filterButtons').push(button);
+                    return button;
                 });
             });
         },

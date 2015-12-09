@@ -4,7 +4,7 @@
 </tr>
 <% } %>
 
-<% _.each(shownResults, function(movie) { %>
+<% _.each(filteredResults, function(movie) { %>
 <tr class="accordion-toggle">
     <td><%= movie.releaseDate.substring(0,4) %></td>
     <td><img src="<%= movie.artworkUrl60 %>"></td>

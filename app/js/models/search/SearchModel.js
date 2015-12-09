@@ -1,12 +1,14 @@
 define([
+    'jquery',
     'underscore',
     'backbone'
-], function(_, Backbone) {
+], function($, _, Backbone) {
         var SearchModel = Backbone.Model.extend({
             initialize: function(obj) {
                 this.set("results", []);
-                this.set("shownResults", []);
-                this.set("currentGenre", "all");
+                this.set("filteredResults", []);
+                this.set("filters", []);
+                this.filterAttribute = obj.filterAttribute;
                 this.fetchCallback = obj.fetchCallback;
             },
 
@@ -17,31 +19,62 @@ define([
 
             updateResults: function(results) {
                 this.set({"results": results});
-                this.set("currentGenre", "all");
+                this.set("filters", []);
             },
 
-            sortGenres: function() {
-                this.set("byGenres", {"all": this.get('results')});
-                var genres = this.get('byGenres');
+            filterResults: function() {
+                var attribute = this.filterAttribute;
+                this.set("byFilter", {});
+                var genres = this.get("byFilter");
                 this.get('results').forEach(function(element) {
-                    if(!genres[element.primaryGenreName]) {
-                        genres[element.primaryGenreName] = [];
+                    if(!genres[element[attribute]]) {
+                        genres[element[attribute]] = [];
                     }
-                    genres[element.primaryGenreName].push(element);
+                    genres[element[attribute]].push(element);
                 });
                 this.set("genres", Object.keys(genres));
             },
 
-            forEachGenre: function(callback) {
-                this.sortGenres();
-                this.get('genres').forEach(function(genre) {
-                    callback(genre);
+            forEachAvailableFilter: function(callback) {
+                this.filterResults();
+                this.get('genres').forEach(function(filter) {
+                    callback(filter);
                 });
             },
 
-            filterByGenre: function(genre) {
-                this.set("shownResults", this.get('byGenres')[genre]);
-                this.set("currentGenre", genre);
+            addFilter: function(filterName) {
+                var filters = this.get("filters");
+                if($.inArray(filterName, filters) > -1) {
+                    return;
+                }
+                filters.push(filterName);
+
+                this.refreshFilteredResults();
+            },
+
+            removeFilter: function(filterName) {
+                var filters = this.get("filters");
+                var index = filters.indexOf(filterName);
+                if (index !== -1) {
+                    filters.splice(index, 1);
+                }
+
+                this.refreshFilteredResults();
+            },
+
+            refreshFilteredResults: function() {
+                var filters = this.get("filters");
+                var byFilter = this.get("byFilter");
+                var shownResults = [];
+                filters.forEach(function(filter) {
+                    shownResults.push.apply(shownResults, byFilter[filter]);
+                });
+                this.set("filteredResults", shownResults);
+            },
+
+            resetFilters: function() {
+                this.set("filters", []);
+                this.set("filteredResults", this.get("results"));
             }
         });
 
