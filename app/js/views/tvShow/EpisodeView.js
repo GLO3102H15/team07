@@ -28,7 +28,9 @@ define([
         render: function() {
             $("#tv-show-episode").html(this.template({tvShows: this.tvShow.attributes.results}));
             return this;
-        }
+        },
+
+
     });
 
     return EpisodeView;
