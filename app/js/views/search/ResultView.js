@@ -7,8 +7,46 @@ define([
     'text!templates/search/moviesResultTemplate.html',
     'text!templates/search/tvshowsResultTemplate.html',
     'text!templates/search/usersResultTemplate.html',
-    'text!templates/search/filteredMovies.html'
-], function($, _, Backbone, SearchModel, actorsResult, moviesResult, tvshowsResult, usersResult, filteredMovies) {
+    'text!templates/search/filteredMovies.html',
+    'text!templates/search/filteredTvShows.html'
+], function($, _, Backbone, SearchModel, actorsResult, moviesResult, tvshowsResult, usersResult, filteredMovies, filteredTvShows) {
+
+    function bindModelByGenreSelector(model, selectorId) {
+        var allButton = $('<label class="btn btn-primary">all</label>').click(
+            function() {
+                allButton.prop('filterButtons').forEach(function(button) {
+                    button.prop('checked', false);
+                    button.removeClass("active");
+                });
+                model.resetFilters();
+            }
+        );
+        allButton.prop('filterButtons', []);
+        $("#" + selectorId).append(function() {
+            return allButton;
+        });
+        model.forEachAvailableFilter(function(filter){
+            $("#" + selectorId).append(function() {
+                var button = $('<label class="btn btn-primary"><input type="checkbox">' + filter + '</label>');
+
+                button.prop('checked', false);
+
+                button.click(function() {
+                    if(button.prop('checked')) {
+                        button.prop('checked', false);
+                        model.removeFilter(filter);
+                    } else {
+                        button.prop('checked', true);
+                        model.addFilter(filter);
+                    }
+                });
+
+                allButton.prop('filterButtons').push(button);
+                return button;
+            });
+        });
+    }
+
     var ResultView = Backbone.View.extend({
 
         initialize: function() {
@@ -27,11 +65,14 @@ define([
                 filterAttribute: 'primaryGenreName'
             });
 
-            this.tvShows = new SearchModel({fetchCallback: function(tvShows, value) {
-                $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
-                    tvShows.updateResults(data.results);
-                });
-            }});
+            this.tvShows = new SearchModel({
+                fetchCallback: function(tvShows, value) {
+                    $.get("https://umovie.herokuapp.com/search/tvshows/seasons?" + "q=" + value).done(function(data) {
+                        tvShows.updateResults(data.results);
+                    });
+                },
+                filterAttribute: 'primaryGenreName'
+            });
 
             this.users = new SearchModel({fetchCallback: function(users, value) {
                 $.get("https://umovie.herokuapp.com/search/users?" + "q=" + value).done(function(data) {
@@ -45,6 +86,7 @@ define([
             this.users.on("change:results", this.displayUsersResults, this.users);
 
             this.movies.on("change:filteredResults", this.filterMovieResults, this.movies);
+            this.tvShows.on("change:filteredResults", this.filterTvShowResults, this.tvShows);
         },
 
         displayMoviesResults: function(model) {
@@ -59,40 +101,7 @@ define([
                 $("#users-search").slideUp("slow");
             });
 
-            var allButton = $('<label class="btn btn-primary">all</label>').click(
-                function() {
-                    allButton.prop('filterButtons').forEach(function(button) {
-                        console.log(button.prop('checked'));
-                        button.prop('checked', false);
-                        button.removeClass("active");
-                    });
-                    model.resetFilters();
-                }
-            );
-            allButton.prop('filterButtons', []);
-            $("#filter-movie-buttons").append(function() {
-                return allButton;
-            });
-            model.forEachAvailableFilter(function(filter){
-                $("#filter-movie-buttons").append(function() {
-                    var button = $('<label class="btn btn-primary"><input type="checkbox">' + filter + '</label>');
-
-                    button.prop('checked', false);
-
-                    button.click(function() {
-                        if(button.prop('checked')) {
-                            button.prop('checked', false);
-                            model.removeFilter(filter);
-                        } else {
-                            button.prop('checked', true);
-                            model.addFilter(filter);
-                        }
-                    });
-
-                    allButton.prop('filterButtons').push(button);
-                    return button;
-                });
-            });
+            bindModelByGenreSelector(model, "filter-movie-buttons");
         },
 
         filterMovieResults: function(model) {
@@ -111,6 +120,13 @@ define([
                 $("#tvshows-search").slideUp("slow");
                 $("#users-search").slideUp("slow");
             });
+
+            bindModelByGenreSelector(model, "filter-tvshows-buttons");
+        },
+
+        filterTvShowResults: function(model) {
+            var template = _.template(filteredTvShows);
+            $("#filtered-tvshow-results").html(template(model.toJSON()));
         },
 
         displayActorsResults: function(model) {

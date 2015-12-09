@@ -15,7 +15,11 @@
         <th>Go to page</th>
     </tr>
     </thead>
-    <tbody>
+
+    <div class="btn-group" data-toggle="buttons" id="filter-tvshows-buttons">
+    </div>
+
+    <tbody id="filtered-tvshow-results">
     <% if (typeof(results[0]) == "undefined") { %>
     <tr class="accordion-toggle">
         <td>NO TV SHOWS WERE FOUND</td>
