@@ -12,7 +12,6 @@
         <th>Year</th>
         <th>Cover</th>
         <th>Title  (Click to expand)</th>
-        <th>Go to page</th>
     </tr>
     </thead>
 
@@ -29,8 +28,7 @@
     <tr class="accordion-toggle">
         <td><%= tvshow.releaseDate.substring(0,4) %></td>
         <td><img src="<%= tvshow.artworkUrl60 %>"></td>
-        <td><%= tvshow.collectionName %></td>
-        <td><a class="btn btn-lg btn-primary toggle-search2" href="#tv-show/<%= tvshow.collectionId %>" role="button">Go to page</a></td>
+        <td><a class="toggle-search2" href="#tv-show/<%= tvshow.collectionId %>" role="button"><%= tvshow.collectionName %></a></td>
     </tr>
     <% }); %>
     </tbody>

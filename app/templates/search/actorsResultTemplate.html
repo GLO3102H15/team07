@@ -12,7 +12,6 @@
         <th>Name</th>
         <th>Type</th>
         <th>Primary Genre</th>
-        <th>Go to page</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +22,9 @@
     <% } %>
     <% _.each(results, function(actor) { %>
     <tr class="accordion-toggle">
-        <td><%= actor.artistName %></td>
+        <td><a class="toggle-search" href="#actors/<%= actor.artistId %>" role="button"><%= actor.artistName %></a></td>
         <td><%= actor.artistType %></td>
         <td><%= actor.primaryGenreName %></td>
-        <td><a class="btn btn-lg btn-primary toggle-search" href="#actors/<%= actor.artistId %>" role="button">Go to page</a></td>
     </tr>
     <% }); %>
     </tbody>

@@ -11,9 +11,8 @@
     <tr>
         <th>Year</th>
         <th>Cover</th>
-        <th>Title  (Click to expand)</th>
+        <th>Title</th>
         <th>Add to watchlist</th>
-        <th>Go to page</th>
     </tr>
     </thead>
 
@@ -36,9 +35,8 @@
     <tr class="accordion-toggle">
         <td><%= movie.releaseDate.substring(0,4) %></td>
         <td><img src="<%= movie.artworkUrl60 %>"></td>
-        <td><%= movie.trackName %></td>
+        <td><a class="toggle-search1" href="#movies/<%= movie.trackId %>" role="button"><%= movie.trackName %></a></td>
         <td><input class="btn btn-lg btn-primary add-watchlist" id="<%= movie.trackId %>" type="button" value="Add to watchlist"/></td>
-        <td><a class="btn btn-lg btn-primary toggle-search1" href="#movies/<%= movie.trackId %>" role="button">Go to page</a></td>
     </tr>
     <% }); %>
     </tbody>
