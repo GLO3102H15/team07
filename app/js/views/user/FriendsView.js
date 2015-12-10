@@ -16,11 +16,11 @@ define([
             var friendsViewScope = this;
             this.user = new UserModel($.cookie("user"));
             this.model = model;
-            this.model.fetch({
-                success: function () {
-                    friendsViewScope.render()
-                }
+            var renderView = _.after(2, function () {
+                friendsViewScope.render();
             });
+            this.model.fetch({success: renderView});
+            this.user.fetch({success: renderView});
         },
 
         render: function () {

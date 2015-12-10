@@ -33,7 +33,7 @@ define([
             this.el.empty();
             var values = this.model.attributes;
             values["watchlists"] = this.watchlists.models;
-            values["isFollowing"] = this.user.isFollowing(this.model.get("email"));
+            values["isFollowing"] = this.user.isFollowing(this.model.get("id"));
             this.el.html(this.template(values));
             $("#" + this.el[0].id + " .btn-follow").on("click", function() {
                 that.follow(this.value)
@@ -45,23 +45,13 @@ define([
         },
 
         follow: function (id) {
-            var userViewScope = this;
             this.user.follow(id);
-            this.user.fetch({
-                success: function () {
-                    userViewScope.render();
-                }
-            });
+            this.render();
         },
 
         unfollow: function (id) {
-            var userViewScope = this;
             this.user.unfollow(id);
-            this.user.fetch({
-                success: function () {
-                    userViewScope.render();
-                }
-            });
+            this.render();
         }
     });
 
