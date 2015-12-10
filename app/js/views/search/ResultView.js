@@ -212,6 +212,7 @@ define([
                     data: JSON.stringify(data),
                     contentType: 'application/json'
                 });
+                $(this).attr("disabled", true);
             });
         },
 
