@@ -27,7 +27,7 @@ define([
             var data = $(e.target).serialize();
             $.post("https://umovie.herokuapp.com/login", data, function (result) {
                 result.avatar = Gravatar.generate(result.email);
-                $.cookie('user', result);
+                $.cookie('user', result, {expires: 1});
                 location.assign("./");
             })
                 .fail(function () {
