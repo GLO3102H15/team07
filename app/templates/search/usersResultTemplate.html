@@ -12,7 +12,6 @@
         <th>Name</th>
         <th>email</th>
         <th>Follow</th>
-        <th>Profile</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +22,9 @@
     <% } %>
     <% _.each(results, function(user) { %>
     <tr class="accordion-toggle">
-        <td><%= user.name %></td>
+        <td><a class="toggle-search3" href="#users/<%= user.id %>" role="button"><%= user.name %></a></td>
         <td><%= user.email %></td>
-        <td><a class="btn btn-lg btn-primary follow-button toggle-search3" id="<%= user.id %>" href="#" role="button">Follow</a></td>
-        <td><a class="btn btn-lg btn-primary toggle-search3" href="#users/<%= user.id %>" role="button">Profile page</a></td>
+        <td><a class="btn btn-lg btn-primary follow-button" id="<%= user.id %>" role="button">Follow</a></td>
     </tr>
     <% }); %>
     </tbody>

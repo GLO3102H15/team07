@@ -5,7 +5,7 @@ define([
 ], function($, _, Backbone) {
         var SearchModel = Backbone.Model.extend({
             initialize: function(obj) {
-                this.set("results", []);
+                this.set("results", ["no Results"]);
                 this.set("filteredResults", []);
                 this.set("filters", []);
                 this.filterAttribute = obj.filterAttribute;
