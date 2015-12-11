@@ -21,8 +21,9 @@ Watchlists:
 
 Recherche:
 	La barre de recherche est en haut a droite.
+	La recherche se fait si on clique sur la loupe ou n'importe où dans l'écran. Ne pas utiliser ENTER.
 	Fonctionnalité avancée:
-		L'auto complétion est en fonction et propose une liste des choix contenant des films et des series tv.
+		L'auto complétion est en fonction et propose une liste des choix contenant des films et des series tv. Il faut un minimum de 2 lettres pour avoir une suggestion.
 	Sinon, l'on peut compléter la recherche pour aller vers une page de recherche complète et exhaustive sur tous les types de résultats possibles (movies, tv-shows, users, actors).
 	Si la recherche ne donne rien dans une catégorie un simple message indique une recherche infructueuse.
 
@@ -34,7 +35,7 @@ User:
 
 Tv-show:
 	Chacun des episodes d'une série possède la fonction d'être affiché en détail, dans une fenêtre modale dynamique, au moment du la selection de celui-ci.
-	Une barre de recherche offrant une recherche parmis les episodes d'une série télé est aussi disponible et offre la même fonction d'auto complétion que la barre de recherche de la barre de navigation, mais seulement pour les épisodes de la série. Le résultat est encore une fois dans une fenêtre modale dynamique
+	Une barre de recherche offrant une recherche parmis les episodes d'une série télé est aussi disponible et offre la même fonction d'auto complétion que la barre de recherche de la barre de navigation, mais seulement pour les épisodes de la série. Le résultat est encore une fois dans une fenêtre modale dynamique. Il faut un minimum de 2 lettres pour avoir une suggestion.
 
 
 
