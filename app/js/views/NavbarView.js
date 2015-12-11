@@ -32,12 +32,12 @@ define([
                     "https://umovie.herokuapp.com/search?q=" + request.term,
                     function (data) {
                         var suggestion =[""];
-                        if("results" in data){
-                            for(var i=0;i<5;i++){
-                                if ("trackName" in data.results[i]){suggestion.push(data.results[i].trackName);}
-                                else{suggestion.push(data.results[i].collectionName);}
+                            for(var i=0;i<10;i++){
+                                if(data.results[i] != undefined){
+                                    if ("trackName" in data.results[i]){suggestion.push(data.results[i].trackName);}
+                                    else{suggestion.push(data.results[i].collectionName);}
+                                }
                             }
-                        }
                         response(suggestion);
                     });
             };
