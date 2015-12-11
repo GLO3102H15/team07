@@ -16,3 +16,24 @@ Watchlists:
 	Pour ajouter un film à une watchlist, accéder à la page du film, sélectionner la watchlist dans le bas et appuyer sur le 	 bouton d'ajout.
 	Pour renommer une watchlist, simplement double-cliquer son nom.
 	Pour effacer une watchlist ou enlever un film d'une watchlist, cliquer sur le X dans le coin droit des thumbnails.
+
+Recherche:
+	La barre de recherche est en haut a droite.
+	Fonctionnalité avancée:
+		L'auto complétion est en fonction et l'on peut directement prendre un choix proposé pour être redirigé directement à ce choix.
+	Sinon, l'on peut compléter la recherche pour aller vers une page de recherche complète et exhaustive sur tous les types de résultats possibles (movies, tv-shows, users, actors).
+	Si la recherche ne donne rien dans une catégorie un simple message indique une recherche infructueuse.
+
+User:
+	Fonctionnalité avancée:
+		Le profil d'un utilisateur est connecté avec son image gravatar assumant qu'il en ai un sinon c'est l'image par defaut qui est affichée.
+	L'utilisateur peut voir ses amis qu'il suit ce qui lui retourne une liste de ceux-ci avec la possibilité de ne plus les suivres, d'aller sur leur page de profil ou encore de regarder les watchlists de ceux-ci.
+	Il peut aussi voir sa liste de Watchlists.
+
+Tv-show:
+	Chacun des episodes d'une série possède la fonction d'être affiché en détail au moment du la selection de celui-ci.
+	Une barre de recherche offrant une recherche parmis les episode d'une série télé est aussi disponible et offre la me fonction d'auto complétion que la barre de recherche de la barre de navigation, mais seulement appliqué aux épisodes de la série.
+
+
+
+
