@@ -5,8 +5,10 @@ URLS Pertinents:
 	/team07/app/#movies/:id
 	/team07/app/#actors/:id
 	/team07/app/#tv-show/:id
-	/team07/app/#watchlists
 	/team07/app/#watchlists/:id
+	/team07/app/#users/:id
+	/team07/app/#users/:id/watchlists
+	/team07/app/#users/:id/friends
 
 Boutons:
 	Pour accéder aux pages mentionnées ci-dessus, vous pouvez cliquer sur les boutons dans le carousel. Le bouton de Chris Pratt correspond à sa page d'acteur, les boutons The Martian et Minions correspondent à leur page de film et les boutons Firefly et Friends correspondent à leur page de tv-show.
